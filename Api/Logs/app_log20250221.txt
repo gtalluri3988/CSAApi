@@ -1,0 +1,984 @@
+2025-02-21 14:06:50.288 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 14:06:50.573 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-21 14:06:50.575 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-21 14:06:50.578 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 14:06:50.580 +05:30 [INF] Hosting environment: Development
+2025-02-21 14:06:50.581 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-21 14:06:50.903 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-21 14:06:51.253 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 352.6177ms
+2025-02-21 14:06:51.268 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-21 14:06:51.268 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-21 14:06:51.294 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 25.5388ms
+2025-02-21 14:06:51.347 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 79.0637ms
+2025-02-21 14:06:51.379 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-21 14:06:51.499 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 119.7495ms
+2025-02-21 14:07:13.445 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 48
+2025-02-21 14:07:13.467 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 14:07:13.491 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 14:07:14.017 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-21 14:07:17.369 +05:30 [INF] Executed DbCommand (51ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 14:07:17.604 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 14:07:19.583 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 14:07:19.599 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 6102.0611ms
+2025-02-21 14:07:19.604 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 14:07:19.611 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 48 - 200 - application/json;+charset=utf-8 6165.8972ms
+2025-02-21 14:15:37.429 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 14:15:37.437 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:15:37.439 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:15:37.441 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 12.1921ms
+2025-02-21 14:16:03.197 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 14:16:03.214 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:16:03.220 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:16:03.225 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 28.9335ms
+2025-02-21 14:26:14.037 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 14:26:14.045 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:26:14.047 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:26:14.050 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 12.0761ms
+2025-02-21 14:27:19.048 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 14:27:19.063 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:27:19.068 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:27:19.073 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 25.8939ms
+2025-02-21 14:34:03.307 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 14:34:03.310 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:34:03.313 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:34:03.317 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 10.1039ms
+2025-02-21 14:35:48.753 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 14:35:48.755 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:35:48.757 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:35:48.758 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 4.5870ms
+2025-02-21 14:40:32.213 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 14:40:32.239 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:40:32.247 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:40:32.256 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 42.5070ms
+2025-02-21 14:40:58.091 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 14:40:58.107 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:40:58.114 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 14:40:58.119 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 29.2048ms
+2025-02-21 14:43:59.583 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 14:43:59.796 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-21 14:43:59.798 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-21 14:43:59.801 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 14:43:59.802 +05:30 [INF] Hosting environment: Development
+2025-02-21 14:43:59.803 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-21 14:44:00.312 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-21 14:44:00.614 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 303.1466ms
+2025-02-21 14:44:00.622 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-21 14:44:00.626 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-21 14:44:00.648 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 26.1075ms
+2025-02-21 14:44:00.711 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 85.4297ms
+2025-02-21 14:44:00.739 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-21 14:44:00.825 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 86.5331ms
+2025-02-21 20:08:24.871 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 20:08:25.109 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-21 20:08:25.111 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-21 20:08:25.114 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 20:08:25.115 +05:30 [INF] Hosting environment: Development
+2025-02-21 20:08:25.116 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-21 20:08:25.454 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-21 20:08:25.809 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 355.4482ms
+2025-02-21 20:08:25.820 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-21 20:08:25.820 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-21 20:08:25.835 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 15.1648ms
+2025-02-21 20:08:25.881 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 61.5791ms
+2025-02-21 20:08:25.908 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-21 20:08:26.025 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 116.7564ms
+2025-02-21 20:08:55.699 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 20:08:55.708 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 20:08:55.710 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 20:08:55.711 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 13.4535ms
+2025-02-21 20:12:00.106 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 20:12:00.342 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-21 20:12:00.343 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-21 20:12:00.346 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 20:12:00.347 +05:30 [INF] Hosting environment: Development
+2025-02-21 20:12:00.348 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-21 20:12:00.905 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-21 20:12:01.179 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 274.4938ms
+2025-02-21 20:12:01.184 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-21 20:12:01.184 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-21 20:12:01.205 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 21.2348ms
+2025-02-21 20:12:01.239 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 55.0676ms
+2025-02-21 20:12:01.264 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-21 20:12:01.357 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 92.6097ms
+2025-02-21 20:12:45.440 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7225/api/Auth/Authenticate application/json 51
+2025-02-21 20:12:45.453 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:12:45.497 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 20:12:46.515 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-21 20:12:52.670 +05:30 [INF] Executed DbCommand (103ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 20:12:53.209 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 20:12:54.979 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 20:12:55.009 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 9504.8883ms
+2025-02-21 20:12:55.016 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:12:55.045 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7225/api/Auth/Authenticate application/json 51 - 200 - application/json;+charset=utf-8 9604.9817ms
+2025-02-21 20:13:17.863 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 20:13:17.876 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 20:13:17.881 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 20:13:17.885 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 21.2912ms
+2025-02-21 20:14:29.140 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 20:14:29.346 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-21 20:14:29.348 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-21 20:14:29.350 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 20:14:29.352 +05:30 [INF] Hosting environment: Development
+2025-02-21 20:14:29.353 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-21 20:14:30.042 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-21 20:14:30.335 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 295.3089ms
+2025-02-21 20:14:30.344 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-21 20:14:30.344 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-21 20:14:30.372 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 27.8625ms
+2025-02-21 20:14:30.425 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 80.8733ms
+2025-02-21 20:14:30.456 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-21 20:14:30.557 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 100.8960ms
+2025-02-21 20:14:46.188 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 20:14:46.210 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:14:46.220 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-02-21 20:14:46.224 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-02-21 20:14:46.229 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 405 0 - 41.6146ms
+2025-02-21 20:16:13.173 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 20:16:13.341 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-21 20:16:13.343 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-21 20:16:13.350 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 20:16:13.351 +05:30 [INF] Hosting environment: Development
+2025-02-21 20:16:13.352 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-21 20:16:14.059 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-21 20:16:14.344 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 286.4017ms
+2025-02-21 20:16:14.354 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-21 20:16:14.354 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-21 20:16:14.367 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 12.5783ms
+2025-02-21 20:16:14.406 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 52.0211ms
+2025-02-21 20:16:14.430 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-21 20:16:14.521 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 91.1176ms
+2025-02-21 20:16:22.302 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 20:16:22.323 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:16:22.329 +05:30 [INF] CORS policy execution successful.
+2025-02-21 20:16:22.336 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 33.6702ms
+2025-02-21 20:16:22.341 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 20:16:22.347 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:16:22.349 +05:30 [INF] CORS policy execution successful.
+2025-02-21 20:16:22.362 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:16:22.406 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 20:16:23.137 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-21 20:16:41.109 +05:30 [INF] Executed DbCommand (62ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 20:16:41.498 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 20:16:50.637 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 20:16:50.663 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 28245.6941ms
+2025-02-21 20:16:50.668 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:16:50.686 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 28344.9989ms
+2025-02-21 20:21:13.536 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 20:21:13.560 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:21:13.572 +05:30 [INF] CORS policy execution successful.
+2025-02-21 20:21:13.575 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 39.1500ms
+2025-02-21 20:21:13.578 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 20:21:13.580 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:21:13.581 +05:30 [INF] CORS policy execution successful.
+2025-02-21 20:21:13.586 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:21:13.589 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 20:21:23.961 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 20:21:24.007 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 20:21:24.019 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 20:21:24.024 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 10429.4881ms
+2025-02-21 20:21:24.031 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:21:24.035 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 10457.5933ms
+2025-02-21 20:41:18.275 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 20:41:18.290 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:41:18.294 +05:30 [INF] CORS policy execution successful.
+2025-02-21 20:41:18.297 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 58.0455ms
+2025-02-21 20:41:18.301 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 20:41:18.304 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:41:18.306 +05:30 [INF] CORS policy execution successful.
+2025-02-21 20:41:18.313 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:41:18.316 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 20:41:18.482 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 20:41:18.526 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 20:41:18.534 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 20:41:18.538 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 217.6624ms
+2025-02-21 20:41:18.540 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:41:18.542 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 241.1264ms
+2025-02-21 20:46:03.986 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 20:46:04.005 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:46:04.008 +05:30 [INF] CORS policy execution successful.
+2025-02-21 20:46:04.011 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 25.1639ms
+2025-02-21 20:46:04.016 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 20:46:04.030 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 20:46:04.031 +05:30 [INF] CORS policy execution successful.
+2025-02-21 20:46:04.033 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:46:04.035 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 20:46:04.078 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 20:46:04.113 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 20:46:04.122 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 20:46:04.124 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 81.8443ms
+2025-02-21 20:46:04.127 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 20:46:04.129 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 113.2326ms
+2025-02-21 21:17:56.421 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:17:56.438 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:17:56.442 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:17:56.444 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 23.5502ms
+2025-02-21 21:17:56.448 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:17:56.451 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:17:56.453 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:17:56.456 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:17:56.461 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:17:56.606 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:17:56.643 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:17:56.652 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:17:56.656 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 189.357ms
+2025-02-21 21:17:56.661 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:17:56.665 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 217.0262ms
+2025-02-21 21:17:59.743 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:17:59.746 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:17:59.747 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:17:59.748 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:17:59.750 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:17:59.781 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:17:59.814 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:17:59.821 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:17:59.824 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 71.9262ms
+2025-02-21 21:17:59.827 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:17:59.829 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 86.8395ms
+2025-02-21 21:18:05.765 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:18:05.769 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:18:05.773 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:18:05.776 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 11.0925ms
+2025-02-21 21:18:05.780 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:18:05.783 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:18:05.785 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:18:05.788 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:18:05.790 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:18:05.826 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:18:05.867 +05:30 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:18:05.874 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:18:05.875 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 80.6064ms
+2025-02-21 21:18:05.877 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:18:05.878 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 98.0250ms
+2025-02-21 21:18:50.422 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:18:50.429 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:18:50.430 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:18:50.431 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 8.6487ms
+2025-02-21 21:18:50.435 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:18:50.440 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:18:50.451 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:18:50.460 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:18:50.464 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:18:50.561 +05:30 [INF] Executed DbCommand (90ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:18:50.708 +05:30 [INF] Executed DbCommand (138ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:18:50.714 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:18:50.716 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 246.83ms
+2025-02-21 21:18:50.720 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:18:50.721 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 286.7133ms
+2025-02-21 21:19:27.117 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:19:27.124 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:19:27.127 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:19:27.128 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 11.0804ms
+2025-02-21 21:19:27.135 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:19:27.137 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:19:27.138 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:19:27.141 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:19:27.143 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:19:27.173 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:19:27.207 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:19:27.216 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:19:27.219 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 72.195ms
+2025-02-21 21:19:27.223 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:19:27.226 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 91.4089ms
+2025-02-21 21:21:36.667 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:21:36.686 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:21:36.691 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:21:36.696 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 28.7834ms
+2025-02-21 21:21:36.711 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:21:36.721 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:21:36.724 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:21:36.728 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:21:36.732 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:21:36.766 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:21:36.803 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:21:36.812 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:21:36.816 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 76.1046ms
+2025-02-21 21:21:36.821 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:21:36.823 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 112.7649ms
+2025-02-21 21:24:05.114 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:24:05.122 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:24:05.123 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:24:05.125 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 11.7875ms
+2025-02-21 21:24:05.134 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:24:05.136 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:24:05.137 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:24:05.138 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:24:05.141 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:24:05.171 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:24:05.200 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:24:05.208 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:24:05.211 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 67.8245ms
+2025-02-21 21:24:05.216 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:24:05.219 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 86.3373ms
+2025-02-21 21:30:04.104 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:30:04.122 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:30:04.125 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:30:04.128 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 23.5195ms
+2025-02-21 21:30:04.131 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:30:04.133 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:30:04.135 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:30:04.138 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:30:04.141 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:30:04.277 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:30:04.307 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:30:04.316 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:30:04.317 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 172.1775ms
+2025-02-21 21:30:04.321 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:30:04.323 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 191.7924ms
+2025-02-21 21:30:54.189 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:30:54.206 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:30:54.212 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:30:54.219 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 29.2902ms
+2025-02-21 21:30:54.224 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:30:54.244 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:30:54.247 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:30:54.250 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:30:54.254 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:30:54.290 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:30:54.326 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:30:54.331 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:30:54.334 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 74.2087ms
+2025-02-21 21:30:54.336 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:30:54.338 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 113.8080ms
+2025-02-21 21:45:20.856 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:45:20.867 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:45:20.871 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:45:20.874 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 18.6917ms
+2025-02-21 21:45:20.876 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:45:20.880 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:45:20.883 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:45:20.885 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:45:20.890 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:45:21.256 +05:30 [INF] Executed DbCommand (96ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:45:21.335 +05:30 [INF] Executed DbCommand (75ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:45:21.339 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:45:21.341 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 447.9317ms
+2025-02-21 21:45:21.343 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:45:21.344 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 468.1489ms
+2025-02-21 21:47:19.341 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 21:47:19.361 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:47:19.364 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:47:19.367 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 26.1697ms
+2025-02-21 21:47:19.370 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 21:47:19.372 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 21:47:19.374 +05:30 [INF] CORS policy execution successful.
+2025-02-21 21:47:19.377 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:47:19.378 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 21:47:21.609 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 21:47:21.641 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 21:47:21.649 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 21:47:21.651 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 2270.9523ms
+2025-02-21 21:47:21.654 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 21:47:21.656 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 2286.5719ms
+2025-02-21 22:40:02.587 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 22:40:02.838 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-21 22:40:02.840 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-21 22:40:02.842 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 22:40:02.843 +05:30 [INF] Hosting environment: Development
+2025-02-21 22:40:02.844 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-21 22:40:03.509 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-21 22:40:03.783 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 273.7123ms
+2025-02-21 22:40:03.787 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-21 22:40:03.787 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-21 22:40:03.804 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 15.7776ms
+2025-02-21 22:40:03.847 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 59.5367ms
+2025-02-21 22:40:03.875 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-21 22:40:03.976 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 101.4785ms
+2025-02-21 22:43:03.399 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 22:43:03.424 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 22:43:03.429 +05:30 [INF] CORS policy execution successful.
+2025-02-21 22:43:03.435 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 35.9485ms
+2025-02-21 22:43:03.439 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 22:43:03.442 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 22:43:03.444 +05:30 [INF] CORS policy execution successful.
+2025-02-21 22:43:03.456 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 22:43:03.501 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 22:43:04.321 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-21 22:43:07.018 +05:30 [INF] Executed DbCommand (80ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 22:43:07.463 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 22:43:07.507 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 22:43:07.521 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 4010.6427ms
+2025-02-21 22:43:07.524 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 22:43:07.535 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 4096.1751ms
+2025-02-21 22:44:04.084 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 22:44:04.102 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 22:44:04.107 +05:30 [INF] CORS policy execution successful.
+2025-02-21 22:44:04.110 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 26.8905ms
+2025-02-21 22:44:04.117 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 22:44:04.121 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 22:44:04.125 +05:30 [INF] CORS policy execution successful.
+2025-02-21 22:44:04.129 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 22:44:04.132 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 22:44:06.051 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 22:44:06.090 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 22:44:06.102 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 22:44:06.107 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 1967.2598ms
+2025-02-21 22:44:06.112 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 22:44:06.116 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 1998.5321ms
+2025-02-21 22:52:48.641 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 22:52:48.653 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 22:52:48.656 +05:30 [INF] CORS policy execution successful.
+2025-02-21 22:52:48.659 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 18.3145ms
+2025-02-21 22:52:48.661 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 22:52:48.663 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 22:52:48.664 +05:30 [INF] CORS policy execution successful.
+2025-02-21 22:52:48.669 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 22:52:48.672 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 22:52:50.629 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 22:52:50.668 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 22:52:50.674 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 22:52:50.678 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 2001.3428ms
+2025-02-21 22:52:50.680 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 22:52:50.683 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 2021.5923ms
+2025-02-21 23:06:17.605 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:06:17.611 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:06:17.613 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:06:17.615 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 10.9728ms
+2025-02-21 23:06:17.619 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:06:17.621 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:06:17.623 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:06:17.625 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:06:17.627 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:06:19.471 +05:30 [INF] Executed DbCommand (68ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:06:19.504 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:06:19.506 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:06:19.508 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 1875.1053ms
+2025-02-21 23:06:19.509 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:06:19.510 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 1891.3745ms
+2025-02-21 23:06:58.731 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:06:58.746 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:06:58.750 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:06:58.754 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 23.2278ms
+2025-02-21 23:06:58.759 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:06:58.766 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:06:58.770 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:06:58.773 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:06:58.776 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:11:14.468 +05:30 [INF] Executed DbCommand (44ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:11:14.494 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:11:14.479 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:11:14.504 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:11:14.511 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:11:14.515 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:11:14.504 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:11:14.522 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:11:14.535 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:11:14.546 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:11:14.557 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 0 - - 65.1773ms
+2025-02-21 23:11:14.561 +05:30 [INF] Executed DbCommand (53ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:11:14.527 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:11:14.563 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:11:14.570 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:11:14.571 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 0 - - 66.9096ms
+2025-02-21 23:11:14.598 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 255817.1331ms
+2025-02-21 23:11:14.598 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 23.2654ms
+2025-02-21 23:11:14.603 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:11:14.608 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:11:14.608 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 0 - application/json;+charset=utf-8 255849.4877ms
+2025-02-21 23:11:14.611 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.IOException: The client reset the request stream.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestStream.ReadAsyncInternal(Memory`1 destination, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask`1.GetTaskForValueTaskSource(IValueTaskSource`1 t)
+--- End of stack trace from previous location ---
+   at System.Text.Json.Serialization.ReadBufferState.ReadFromStreamAsync(Stream utf8Json, CancellationToken cancellationToken, Boolean fillBuffer)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.DeserializeAsync(Stream utf8Json, CancellationToken cancellationToken)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.DeserializeAsObjectAsync(Stream utf8Json, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-21 23:11:14.687 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 500 - text/plain;+charset=utf-8 209.2632ms
+2025-02-21 23:11:21.448 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:11:21.451 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:11:21.453 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:11:21.455 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 7.5168ms
+2025-02-21 23:11:21.458 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:11:21.460 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:11:21.462 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:11:21.464 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:11:21.467 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:11:21.497 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:11:21.534 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:11:21.542 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:11:21.545 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 73.6091ms
+2025-02-21 23:11:21.548 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:11:21.550 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 92.4348ms
+2025-02-21 23:13:00.561 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:13:00.565 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:13:00.570 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:13:00.573 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 11.7671ms
+2025-02-21 23:13:00.576 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:13:00.578 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:13:00.580 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:13:00.581 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:13:00.584 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:13:00.617 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:13:00.749 +05:30 [INF] Executed DbCommand (126ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:13:00.756 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:13:00.757 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 165.0808ms
+2025-02-21 23:13:00.759 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:13:00.769 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 193.7979ms
+2025-02-21 23:14:07.846 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 23:14:08.053 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-21 23:14:08.068 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-21 23:14:08.071 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 23:14:08.073 +05:30 [INF] Hosting environment: Development
+2025-02-21 23:14:08.074 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-21 23:14:08.355 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-21 23:14:08.753 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-21 23:14:08.753 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-21 23:14:08.756 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 403.7933ms
+2025-02-21 23:14:08.773 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 19.9486ms
+2025-02-21 23:14:08.836 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 83.3860ms
+2025-02-21 23:14:08.875 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-21 23:14:08.985 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 109.7074ms
+2025-02-21 23:14:32.873 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:14:32.889 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:14:32.893 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:14:32.898 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 25.4868ms
+2025-02-21 23:14:32.900 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:14:32.904 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:14:32.906 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:14:32.916 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:14:32.954 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:14:33.792 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-21 23:14:34.883 +05:30 [INF] Executed DbCommand (69ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:14:35.221 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:14:35.223 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:14:35.225 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:14:35.228 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:14:35.230 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:14:35.308 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:14:35.348 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:14:35.371 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 2407.9296ms
+2025-02-21 23:14:35.373 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:14:35.389 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 2488.7114ms
+2025-02-21 23:14:35.422 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:14:35.454 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:14:35.464 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:14:35.469 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 237.2047ms
+2025-02-21 23:14:35.472 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:14:35.475 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 254.2658ms
+2025-02-21 23:22:46.952 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:22:46.965 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:22:46.969 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:22:46.971 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 19.8452ms
+2025-02-21 23:22:46.974 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:22:46.976 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:22:46.978 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:22:46.983 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:22:46.988 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:22:47.372 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:22:47.520 +05:30 [INF] Executed DbCommand (141ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:22:47.524 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:22:47.526 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 533.179ms
+2025-02-21 23:22:47.527 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:22:47.529 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 555.4708ms
+2025-02-21 23:30:33.575 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:30:33.592 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:30:33.595 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:30:33.597 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 21.8025ms
+2025-02-21 23:30:33.603 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:30:33.605 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:30:33.606 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:30:33.607 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:30:33.609 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:30:33.754 +05:30 [INF] Executed DbCommand (30ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:30:33.788 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:30:33.791 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:30:33.793 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 181.2038ms
+2025-02-21 23:30:33.795 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:30:33.796 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 194.5911ms
+2025-02-21 23:30:37.557 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:30:37.561 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:30:37.564 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:30:37.567 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:30:37.571 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:30:37.606 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:30:37.642 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:30:37.650 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:30:37.653 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 76.6968ms
+2025-02-21 23:30:37.656 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:30:37.658 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 101.1808ms
+2025-02-21 23:31:34.074 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:31:34.088 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:31:34.090 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:31:34.092 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 18.6706ms
+2025-02-21 23:31:34.098 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:31:34.110 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:31:34.113 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:31:34.114 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:31:34.116 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:31:34.144 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:31:34.180 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:31:34.189 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:31:34.192 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 73.6394ms
+2025-02-21 23:31:34.197 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:31:34.199 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 100.9446ms
+2025-02-21 23:34:48.253 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:34:48.268 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:34:48.271 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:34:48.274 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 21.5360ms
+2025-02-21 23:34:48.278 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:34:48.281 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:34:48.284 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:34:48.285 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:34:48.287 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:34:48.325 +05:30 [INF] Executed DbCommand (33ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:34:48.465 +05:30 [INF] Executed DbCommand (136ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:34:48.471 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:34:48.473 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 183.8733ms
+2025-02-21 23:34:48.476 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:34:48.477 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 198.8161ms
+2025-02-21 23:35:06.026 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:35:06.031 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:35:06.037 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:35:06.044 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 17.6223ms
+2025-02-21 23:35:06.053 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:35:06.058 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:35:06.062 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:35:06.065 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:35:06.067 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:35:06.096 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:35:06.133 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:35:06.140 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:35:06.143 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 73.0118ms
+2025-02-21 23:35:06.147 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:35:06.150 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 97.0327ms
+2025-02-21 23:36:18.784 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:36:18.796 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:36:18.800 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:36:18.804 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 20.8435ms
+2025-02-21 23:36:18.806 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:36:18.819 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:36:18.826 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:36:18.830 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:36:18.835 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:36:18.868 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:36:18.901 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:36:18.910 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:36:18.912 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 72.3996ms
+2025-02-21 23:36:18.915 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:36:18.918 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 111.7331ms
+2025-02-21 23:55:38.045 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:55:38.063 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:55:38.067 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:55:38.069 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 24.4872ms
+2025-02-21 23:55:38.075 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:55:38.079 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:55:38.082 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:55:38.085 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:55:38.088 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:55:38.212 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:55:38.244 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:55:38.246 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:55:38.247 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 155.6245ms
+2025-02-21 23:55:38.248 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:55:38.249 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 173.9764ms
+2025-02-21 23:56:42.427 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - -
+2025-02-21 23:56:42.440 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:56:42.442 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:56:42.444 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:7225/api/Auth/Authenticate - - - 204 - - 17.2013ms
+2025-02-21 23:56:42.448 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39
+2025-02-21 23:56:42.451 +05:30 [INF] No CORS policy found for the specified request.
+2025-02-21 23:56:42.454 +05:30 [INF] CORS policy execution successful.
+2025-02-21 23:56:42.456 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:56:42.458 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-21 23:56:42.490 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-21 23:56:42.521 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-21 23:56:42.528 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-21 23:56:42.530 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 68.1022ms
+2025-02-21 23:56:42.536 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-21 23:56:42.540 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 39 - 200 - application/json;+charset=utf-8 92.3551ms

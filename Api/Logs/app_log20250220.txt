@@ -1,0 +1,46 @@
+2025-02-20 17:36:32.237 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-20 17:36:32.637 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-20 17:36:32.640 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-20 17:36:32.644 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-20 17:36:32.645 +05:30 [INF] Hosting environment: Development
+2025-02-20 17:36:32.647 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-20 17:36:33.521 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-20 17:36:33.894 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 374.5620ms
+2025-02-20 17:36:33.907 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-20 17:36:33.907 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-20 17:36:33.927 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 19.8562ms
+2025-02-20 17:36:34.003 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 95.6383ms
+2025-02-20 17:36:34.032 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-20 17:36:34.199 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 167.5868ms
+2025-02-20 20:12:13.307 +05:30 [INF] User profile is available. Using 'C:\Users\Srikanth\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-20 20:12:13.495 +05:30 [INF] Now listening on: https://localhost:7225
+2025-02-20 20:12:13.498 +05:30 [INF] Now listening on: http://localhost:5130
+2025-02-20 20:12:13.500 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-20 20:12:13.502 +05:30 [INF] Hosting environment: Development
+2025-02-20 20:12:13.503 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-02-20 20:12:13.994 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-02-20 20:12:14.418 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_vs/browserLink - -
+2025-02-20 20:12:14.418 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - -
+2025-02-20 20:12:14.447 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 200 - text/html;charset=utf-8 459.0644ms
+2025-02-20 20:12:14.447 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_framework/aspnetcore-browser-refresh.js - - - 200 12338 application/javascript;+charset=utf-8 25.6110ms
+2025-02-20 20:12:14.491 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 73.1219ms
+2025-02-20 20:12:14.521 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - -
+2025-02-20 20:12:14.659 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 137.7305ms
+2025-02-20 20:12:25.348 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 48
+2025-02-20 20:12:25.373 +05:30 [INF] Executing endpoint 'AuthController.Authenticate (Api)'
+2025-02-20 20:12:25.428 +05:30 [INF] Route matched with {action = "Authenticate", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Models.CSAResponseModel`1[Api.Models.AuthenticationResponse]] Authenticate(Api.Models.AuthenticationModel) on controller AuthController (Api).
+2025-02-20 20:12:26.428 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-20 20:12:31.045 +05:30 [INF] Executed DbCommand (80ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Name] AS [FirstName], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__ToLower_0
+2025-02-20 20:12:31.682 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LoginHistory] ([DataResponse], [Date], [Ip], [JwtTokenExpiryDate], [Online], [RecaptchaScore], [Response], [UserName])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-02-20 20:12:33.828 +05:30 [INF] Executing ObjectResult, writing value of type 'Api.Models.CSAResponseModel`1[[Api.Models.AuthenticationResponse, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-20 20:12:33.861 +05:30 [INF] Executed action AuthController.Authenticate (Api) in 8419.1039ms
+2025-02-20 20:12:33.866 +05:30 [INF] Executed endpoint 'AuthController.Authenticate (Api)'
+2025-02-20 20:12:33.890 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7225/api/Auth/Authenticate application/json 48 - 200 - application/json;+charset=utf-8 8542.9108ms
