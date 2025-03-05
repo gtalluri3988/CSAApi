@@ -59,7 +59,7 @@ namespace DB.Migrations
                     b.Property<string>("CommunityName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CommunityTypeId")
+                    b.Property<int>("CommunityTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -67,6 +67,12 @@ namespace DB.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("FeesMonthly")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GracePeriod")
+                        .HasColumnType("int");
 
                     b.Property<int>("NoOfParkingLot")
                         .HasColumnType("int");
@@ -134,6 +140,9 @@ namespace DB.Migrations
                     b.Property<int>("ComplaintStatusId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ComplaintTypeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -142,6 +151,9 @@ namespace DB.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ResidentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("SecurityRemarks")
                         .HasColumnType("nvarchar(max)");
@@ -158,6 +170,10 @@ namespace DB.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ComplaintStatusId");
+
+                    b.HasIndex("ComplaintTypeId");
+
+                    b.HasIndex("ResidentId");
 
                     b.ToTable("ComplaintDetail");
                 });
@@ -188,6 +204,22 @@ namespace DB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ComplaintStatus");
+                });
+
+            modelBuilder.Entity("DB.EFModel.ComplaintType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ComplaintType");
                 });
 
             modelBuilder.Entity("DB.EFModel.ContentManagement", b =>
@@ -584,6 +616,9 @@ namespace DB.Migrations
                     b.Property<string>("NRIC")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ParkingLotNos")
                         .HasColumnType("int");
 
@@ -856,14 +891,14 @@ namespace DB.Migrations
                     b.Property<string>("VehicleNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("typeId")
+                    b.Property<int>("VehicleTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ResidentId");
 
-                    b.HasIndex("typeId");
+                    b.HasIndex("VehicleTypeId");
 
                     b.ToTable("VehicleDetails");
                 });
@@ -949,10 +984,15 @@ namespace DB.Migrations
                     b.Property<string>("VisitPurpose")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("VisitorAccessTypeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("VisitorName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("VisitorAccessTypeId");
 
                     b.ToTable("VisitorAccessDetails");
                 });
@@ -987,16 +1027,16 @@ namespace DB.Migrations
 
             modelBuilder.Entity("DB.EFModel.VisitorParkingCharge", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ChargeTypeId")
+                    b.Property<int>("ChargeTypeId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CommunityId")
@@ -1033,7 +1073,9 @@ namespace DB.Migrations
                 {
                     b.HasOne("DB.EFModel.CommunityType", "CommunityType")
                         .WithMany()
-                        .HasForeignKey("CommunityTypeId");
+                        .HasForeignKey("CommunityTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DB.EFModel.State", "State")
                         .WithMany()
@@ -1052,7 +1094,23 @@ namespace DB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DB.EFModel.ComplaintType", "ComplaintType")
+                        .WithMany()
+                        .HasForeignKey("ComplaintTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DB.EFModel.Resident", "Resident")
+                        .WithMany()
+                        .HasForeignKey("ResidentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("ComplaintStatus");
+
+                    b.Navigation("ComplaintType");
+
+                    b.Navigation("Resident");
                 });
 
             modelBuilder.Entity("DB.EFModel.ContentManagement", b =>
@@ -1127,8 +1185,8 @@ namespace DB.Migrations
 
             modelBuilder.Entity("DB.EFModel.Resident", b =>
                 {
-                    b.HasOne("DB.EFModel.Community", "Community")
-                        .WithMany()
+                    b.HasOne("DB.EFModel.Community", null)
+                        .WithMany("Residents")
                         .HasForeignKey("CommunityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1136,8 +1194,6 @@ namespace DB.Migrations
                     b.HasOne("DB.EFModel.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId");
-
-                    b.Navigation("Community");
 
                     b.Navigation("State");
                 });
@@ -1180,33 +1236,56 @@ namespace DB.Migrations
             modelBuilder.Entity("DB.EFModel.VehicleDetails", b =>
                 {
                     b.HasOne("DB.EFModel.Resident", "resident")
-                        .WithMany()
+                        .WithMany("VehicleDetails")
                         .HasForeignKey("ResidentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DB.EFModel.VehicleType", "type")
                         .WithMany()
-                        .HasForeignKey("typeId");
+                        .HasForeignKey("VehicleTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("resident");
 
                     b.Navigation("type");
                 });
 
+            modelBuilder.Entity("DB.EFModel.VisitorAccessDetails", b =>
+                {
+                    b.HasOne("DB.EFModel.VisitorAccessType", "VisitorAccessType")
+                        .WithMany()
+                        .HasForeignKey("VisitorAccessTypeId");
+
+                    b.Navigation("VisitorAccessType");
+                });
+
             modelBuilder.Entity("DB.EFModel.VisitorParkingCharge", b =>
                 {
                     b.HasOne("DB.EFModel.ChargesType", "ChargeType")
                         .WithMany()
-                        .HasForeignKey("ChargeTypeId");
+                        .HasForeignKey("ChargeTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("DB.EFModel.Community", "Community")
-                        .WithMany()
+                    b.HasOne("DB.EFModel.Community", null)
+                        .WithMany("VisitorParkingCharges")
                         .HasForeignKey("CommunityId");
 
                     b.Navigation("ChargeType");
+                });
 
-                    b.Navigation("Community");
+            modelBuilder.Entity("DB.EFModel.Community", b =>
+                {
+                    b.Navigation("Residents");
+
+                    b.Navigation("VisitorParkingCharges");
+                });
+
+            modelBuilder.Entity("DB.EFModel.Resident", b =>
+                {
+                    b.Navigation("VehicleDetails");
                 });
 
             modelBuilder.Entity("DB.EFModel.Roles", b =>

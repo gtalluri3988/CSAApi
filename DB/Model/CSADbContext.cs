@@ -44,6 +44,13 @@ namespace DB.EFModel
         public DbSet<ContentPicture> ContentPicture { get; set; }
         public DbSet<ChargesType> ChargesType { get; set; }
         public DbSet<VisitorParkingCharge> VisitorParkingCharge { get; set; }
+
+        public DbSet<ComplaintType> ComplaintType { get; set; }
+      //  public DbSet<CommunityVisitorCharges> CommunityVisitorCharges { get; set; }
+        
+
+
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var entries = ChangeTracker.Entries<BaseEntity>();

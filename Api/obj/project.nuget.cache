@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "MYtDYOKhQ4I8dQv2BVMbENuDz9GomC5Jlp71LbnNnhVEO0b+L6q3OlUxyR3Kq2MJw/pmFCrG2GwUPRgB/gu5Ww==",
+  "dgSpecHash": "i9CLleMcF8zM3DkfUS3QC0z2bxgaTSexntrkqmDCEbRkW8K5YJOiIyvjPm16H0+fuofunokCtNXnN1NC8/5PpA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Srikanth\\OneDrive\\Documents\\Visual Studio 2022\\CSA_Core\\CSAApi\\WebAPI\\Api\\Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Srikanth\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\Srikanth\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\Srikanth\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Srikanth\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.0\\microsoft.aspnetcore.authentication.jwtbearer.7.0.0.nupkg.sha512",
@@ -16,7 +18,7 @@
     "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.0\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.9\\microsoft.aspnetcore.openapi.7.0.9.nupkg.sha512",
     "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\9.0.2\\microsoft.bcl.asyncinterfaces.9.0.2.nupkg.sha512",
-    "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\Srikanth\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",

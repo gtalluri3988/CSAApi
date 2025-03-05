@@ -2,7 +2,7 @@
 using DB.EFModel;
 
 
-namespace BusinessLogic.Interfaces.Repositories
+namespace DB.Repositories.Interfaces
 {
     public interface IUserRepository 
     {

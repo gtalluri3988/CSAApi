@@ -8,13 +8,15 @@ namespace DB.EFModel
 {
     public class VisitorParkingCharge:BaseEntity
     {
-        [Key]  // Marks as Primary Key
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        [Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public long Id { get; set; }
         public int NoOfVistorParkingLot { get; set; }
         public int Amount { get; set; }
         public bool Status { get; set; }
+        public int ChargeTypeId { get; set; }
         public ChargesType? ChargeType { get; set; }
-        public Community? Community { get; set; }
+        public int? CommunityId { get; set; }
+        
     }
 }

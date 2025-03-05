@@ -12,6 +12,8 @@ using YourNamespace.Services;
 using DB;
 using DB.EFModel;
 using Api.Helpers;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
@@ -43,11 +45,53 @@ builder.Services.AddBusinessLogic().AddDBProject(builder.Configuration);
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<ICommunityService, CommunityService>();
+builder.Services.AddScoped<IVisitorService, VisitorService>();
+builder.Services.AddScoped<IFacilityService, FacilityService>();
+builder.Services.AddScoped<IComplaintService, ComplaintService>();
+builder.Services.AddScoped<IResidentService, ResidentService>();
 //builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(@"C:\Keys"))
+    .SetApplicationName("MyApp");
+//builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "CSA API", Version = "v1" });
+
+    // Enable the Authorize button
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter 'Bearer {your-token}'"
+    });
+
+    // Apply the security globally
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+
+
+
 builder.Services.AddDbContext<CSADbContext>(options =>
     options.UseSqlServer(connectionString)
            .EnableSensitiveDataLogging()
@@ -59,9 +103,18 @@ Log.Logger = new LoggerConfiguration()
 
 // Use Serilog instead of default logging
 builder.Host.UseSerilog();
-//builder.Services.AddHttpContextAccessor();
-var app = builder.Build();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()  // Allows all origins
+                  .AllowAnyMethod()  // Allows all HTTP methods (GET, POST, etc.)
+                  .AllowAnyHeader(); // Allows all headers
+        });
+});
 
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -69,7 +122,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
-app.UseCors("AllowAngular");
+app.UseCors("AllowAll");
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.UseAuthorization();
 

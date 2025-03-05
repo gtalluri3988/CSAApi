@@ -1,15 +1,7 @@
 ﻿using BusinessLogic.Interfaces;
 using BusinessLogic.Interfaces.Entities;
-using BusinessLogic.Interfaces.Repositories;
 using BusinessLogic.Models.Users;
-using DB.EFModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using DB.Repositories.Interfaces;
 
 namespace BusinessLogic.Services
 {

@@ -1,15 +1,10 @@
 ﻿using BusinessLogic.Interfaces;
-using BusinessLogic.Interfaces.Entities;
-using BusinessLogic.Interfaces.Repositories;
 using BusinessLogic.Models;
-using BusinessLogic.Models.Users;
+using DB.EFModel;
+using DB.Entity;
+using DB.Repositories;
 using DB.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogic.Services
 {
@@ -54,6 +49,43 @@ namespace BusinessLogic.Services
                 
             }).ToList() ?? new List<CommunityTypeDto>(); 
 
+        }
+
+        public async Task<IEnumerable<CommunityDTO>> GetAllCommunitiesAsync()
+        {
+            return await _communityRepository.GetAllAsync();
+        }
+
+        public async Task<CommunityDTO> GetCommunityByIdAsync(int id)
+        {
+            return await _communityRepository.GetCommunityByIdAsync(id);
+        }
+
+        public async Task<CommunityDTO> CreateCommunityAsync(CommunityDTO dto)
+        {
+            return await _communityRepository.SaveCommunityAsync(dto);
+        }
+
+        
+
+        public async Task UpdateCommunityAsync(int id, CommunityDTO dto)
+        {
+            await _communityRepository.UpdateCommunityAsync(id, dto);
+        }
+
+        public async Task DeleteCommunityAsync(int id)
+        {
+            await _communityRepository.DeleteAsync(id);
+        }
+
+        public async Task<IEnumerable<CommunityDTO>> GetAllCommunitiesWithStatesAsync()
+        {
+            return await _communityRepository.GetAllWithStatesAsync();
+        }
+
+        public async Task<IEnumerable<CommunityResidentCountDto>> GetCommunitiesWithResidentCountAsync()
+        {
+            return await _communityRepository.GetAllCommunityWithResidentListAsync();
         }
 
     }

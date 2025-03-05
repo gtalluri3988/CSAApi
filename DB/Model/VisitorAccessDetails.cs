@@ -7,6 +7,8 @@ namespace DB.EFModel
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }  // Primary Key
         public string? VisitorName { get; set; }
+
+        public int? VisitorAccessTypeId { get; set; }
         public string? VisitPurpose { get; set; }
         public string? Status { get; set; }
         public DateTime? EntryTime { get; set; }
@@ -18,7 +20,6 @@ namespace DB.EFModel
         public string? RoadNo { get; set; }
         public string? ContactPerson1 { get; set; }
         public string? ContactPerson2 { get; set; }
-
-
+        public VisitorAccessType? VisitorAccessType { get; set; }
     }
 }

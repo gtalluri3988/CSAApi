@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Release\net7.0\publish\</_PublishTargetUrl>
+    <History>True|2025-03-01T18:51:27.5000244Z;True|2025-03-02T00:19:49.4705818+05:30;True|2025-03-01T23:40:12.4826807+05:30;True|2025-03-01T23:38:10.6982280+05:30;True|2025-03-01T23:35:31.4761029+05:30;True|2025-03-01T23:15:31.0232315+05:30;True|2025-03-01T22:58:40.0148738+05:30;True|2025-03-01T22:42:03.1539641+05:30;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

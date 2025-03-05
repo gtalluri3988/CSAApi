@@ -1,14 +1,6 @@
 ﻿using BusinessLogic.Interfaces;
-using BusinessLogic.Interfaces.Entities;
-using BusinessLogic.Interfaces.Repositories;
 using DB.Entity;
-using DB.Repositories;
 using DB.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogic.Services
 {

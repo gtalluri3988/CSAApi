@@ -15,7 +15,14 @@
         public string? PICMobile { get; set; }
         public string? PICEmail { get; set; }
         public int NoOfParkingLot { get; set; }
+        public int CommunityTypeId { get; set; }
+        public int FeesMonthly { get; set; }
+        public int GracePeriod { get; set; }
         public State? State { get; set; }
         public CommunityType? CommunityType { get; set; }
+        public List<VisitorParkingCharge> VisitorParkingCharges { get; set; } = new List<VisitorParkingCharge>();
+        public List<Resident> Residents { get; set; } = new List<Resident>();
+
+
     }
 }

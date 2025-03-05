@@ -12,7 +12,13 @@ namespace DB.EFModel
         public DateTime? ComplaintDate { get; set; }
         public string? SecurityRemarks { get; set; }
         public int ComplaintStatusId { get; set; }
+        public int ComplaintTypeId { get; set; }
+        public int ResidentId { get; set; }
         public ComplaintStatus? ComplaintStatus { get; set; }
+        public ComplaintType? ComplaintType { get; set; }
+
+        public Resident? Resident { get; set; }
+
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using DB.EFModel;
+using DB.Entity;
 
 namespace DB.Repositories.Interfaces
 {
@@ -6,5 +7,18 @@ namespace DB.Repositories.Interfaces
     {
         Task<List<Community>?> GetCommunityListAsync();
         Task<List<CommunityType>> GetCommunityTypeAsync();
+
+        Task<IEnumerable<CommunityDTO>> GetAllAsync();
+        Task<CommunityDTO> GetByIdAsync(int id);
+        Task<CommunityDTO> AddAsync(CommunityDTO dto);
+        Task UpdateAsync(int id, CommunityDTO dto);
+        Task DeleteAsync(int id);
+
+        Task<IEnumerable<CommunityDTO>> GetAllWithStatesAsync();
+        Task<CommunityDTO> SaveCommunityAsync(CommunityDTO community);
+        Task<CommunityDTO> GetCommunityByIdAsync(int id);
+
+        Task UpdateCommunityAsync(int communityId, CommunityDTO community);
+        Task<List<CommunityResidentCountDto>> GetAllCommunityWithResidentListAsync();
     }
 }

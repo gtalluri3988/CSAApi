@@ -1,0 +1,14 @@
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\bin\Release\net7.0\DB.deps.json
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\bin\Release\net7.0\DB.runtimeconfig.json
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\bin\Release\net7.0\DB.dll
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\bin\Release\net7.0\DB.pdb
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\DB.csproj.AssemblyReference.cache
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\DB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\DB.AssemblyInfoInputs.cache
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\DB.AssemblyInfo.cs
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\DB.csproj.CoreCompileInputs.cache
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\DB.dll
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\refint\DB.dll
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\DB.pdb
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\DB.genruntimeconfig.cache
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\DB\obj\Release\net7.0\ref\DB.dll

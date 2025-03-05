@@ -1,9 +1,3 @@
-C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.csproj.AssemblyReference.cache
-C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.AssemblyInfoInputs.cache
-C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.AssemblyInfo.cs
-C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.csproj.CoreCompileInputs.cache
-C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\appsettings.json
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\Api.exe
@@ -11,6 +5,8 @@ C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\A
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\Api.runtimeconfig.json
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\Api.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\Api.pdb
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -90,6 +86,12 @@ C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\A
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\DB.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\BusinessLogic.pdb
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\bin\Debug\net7.0\DB.pdb
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.csproj.AssemblyReference.cache
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.AssemblyInfoInputs.cache
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.AssemblyInfo.cs
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.csproj.CoreCompileInputs.cache
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\staticwebassets\msbuild.Api.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\staticwebassets\msbuild.build.Api.props
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Api.props
@@ -98,10 +100,10 @@ C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\A
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\staticwebassets.development.json
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\scopedcss\bundle\Api.styles.css
-C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.csproj.CopyComplete
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\refint\Api.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.pdb
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.genruntimeconfig.cache
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\ref\Api.dll
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.csproj.CopyComplete
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.MvcApplicationPartsAssemblyInfo.cs
