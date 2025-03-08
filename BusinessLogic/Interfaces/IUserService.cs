@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Interfaces.Entities;
 using BusinessLogic.Models.Users;
+using DB.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,15 @@ namespace BusinessLogic.Interfaces
         void LogAuthAttempt(string Username, string ip, string response,DateTime? jwtExpiryDate,bool online);
         IUser GetByUsername(string userName);
         //Task<User> GetCurrentUserAsync(string userName);
+        Task<bool> CheckPassword(string password);
+        string GetUserId();
+        string GetUserName();
+        List<string> GetUserRoles();
+        string RoleForUser(int userId);
+        Task<IEnumerable<UserDTO>> GetUserListAsync();
+        Task<UserDTO> CreateUserAsync(UserDTO dto);
+        Task UpdateUserAsync(int id, UserDTO dto);
+        Task<UserDTO> GetUserByIdAsync(int id);
     }
     public enum AuthenticationErrorReason
     {

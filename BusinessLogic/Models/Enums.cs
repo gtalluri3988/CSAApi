@@ -8,7 +8,10 @@ namespace BusinessLogic.Models
 {
     public enum Roles
     {
-        CSAAdmin=1
+        CSAAdmin=2,
+        ResidentAdmin=4,
+        ResidentUser=5, 
+        ResidentUserAdmin=6,
 
     }
 }

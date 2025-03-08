@@ -1,37 +1,45 @@
 ﻿using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using DB.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using YourNamespace.Services;
 
 namespace Api.Controllers
 {
     [Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class FacilityController : ControllerBase
+    public class FacilityController : AuthorizedCSABaseAPIController
     {
         private readonly IFacilityService _facilityService;
+        private readonly ICurrentUserService _currentUserService;
 
-        public FacilityController(IFacilityService facilityService)
+        public FacilityController(IFacilityService facilityService,
+            ICurrentUserService currentUserService, 
+            IUserService userService,
+            ILogger<ResidentController> logger)
+            : base(userService, logger)
         {
+            _currentUserService = currentUserService;
             _facilityService = facilityService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllFacility()
         {
-            var Visitors = await _facilityService.GetAllFacilityAsync();
-            return Ok(Visitors);
+            var Facilities = await _facilityService.GetAllFacilityAsync();
+            return Ok(Facilities);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<IActionResult> GetFacilityById(int id)
         {
-            var visitor = await _facilityService.GetFacilityByIdAsync(id);
-            if (visitor == null)
+            var facility = await _facilityService.GetFacilityByIdAsync(id);
+            if (facility == null)
                 return NotFound();
-            return Ok(visitor);
+            return Ok(facility);
         }
 
         [HttpPost]

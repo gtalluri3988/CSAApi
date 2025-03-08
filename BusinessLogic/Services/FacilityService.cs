@@ -21,22 +21,22 @@ namespace BusinessLogic.Services
 
         public async Task<IEnumerable<FacilityDTO>> GetAllFacilityAsync()
         {
-            return await _facilityRepository.GetAllAsync();
+            return await _facilityRepository.GetAllFacilitiesAsync();
         }
 
         public async Task<FacilityDTO> GetFacilityByIdAsync(int id)
         {
-            return await _facilityRepository.GetByIdAsync(id);
+            return await _facilityRepository.GetAllFacilityByIdAsync(id);
         }
 
         public async Task<FacilityDTO> CreateFacilityAsync(FacilityDTO dto)
         {
-            return await _facilityRepository.AddAsync(dto);
+            return await _facilityRepository.CreateFacilityAsync(dto);
         }
 
         public async Task UpdateFacilityAsync(int id, FacilityDTO dto)
         {
-            await _facilityRepository.UpdateAsync(id, dto);
+            await _facilityRepository.UpdateFacilityAsync(id, dto);
         }
 
         public async Task DeleteFacilityAsync(int id)

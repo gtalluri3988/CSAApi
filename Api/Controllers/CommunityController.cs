@@ -13,7 +13,7 @@ namespace Api.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class CommunityController : ControllerBase
+    public class CommunityController : AuthorizedCSABaseAPIController
     {
         public class Community
         {
@@ -24,8 +24,13 @@ namespace Api.Controllers
         private readonly ICurrentUserService _currentUserService;
         public readonly ICommunityService _communityService;
 
-        public CommunityController(ICurrentUserService currentUserService,ICommunityService communityService)
+        public CommunityController(
+            ICurrentUserService currentUserService,
+            ICommunityService communityService ,IUserService userService,
+            ILogger<ResidentController> logger)
+            : base(userService, logger)
         {
+           
             _currentUserService = currentUserService;
             _communityService= communityService;
         }

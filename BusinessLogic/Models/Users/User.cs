@@ -1,10 +1,6 @@
 ﻿using BusinessLogic.Interfaces;
 using BusinessLogic.Interfaces.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BusinessLogic.Models.Users
 {
@@ -13,15 +9,21 @@ namespace BusinessLogic.Models.Users
         private readonly UserObject _user;
         private readonly IUserService _userService;
 
-        public User(UserObject userObject)
+        public User(UserObject userObject,IUserService userService)
         {
             _user = userObject;
-            //_userService = userService;
-        }
-        public int Id { get => _user.Id; }
-        public UserObject Details { get => _user; }
+            _userService = userService;
+            _Role = new Lazy<string>(() => _userService.RoleForUser(Id));
 
-        //public bool HasRole(Roles role) => Roles.CSAAdmin;
+        }
+        private readonly Lazy<string> _Role;
+        public int Id { get => _user.Id; }
+        public string Role { get => _Role.Value;}
+        public UserObject Details { get => _user; }
+        public bool HasRole(Roles role)=>Role.ToString() == role.ToString();
+        public bool IsCSAAdmin() => HasRole(Roles.CSAAdmin);
+
+        
     }
 
 

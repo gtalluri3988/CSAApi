@@ -21,6 +21,11 @@ namespace DB
             services.AddAutoMapper(typeof(ComplaintProfile));
             services.AddAutoMapper(typeof(CommunityProfile));
             services.AddAutoMapper(typeof(ResidentProfile));
+            services.AddAutoMapper(typeof(PasswordPolicyProfile));
+            services.AddAutoMapper(typeof(UserProfile));
+            services.AddAutoMapper(typeof(RoleProfile));
+            services.AddAutoMapper(typeof(RoleMenuPermission));
+            services.AddAutoMapper(typeof(MenuProfile));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICommunityRepository, CommunityRepository>();
             services.AddScoped<IDropdownRepository, DropdownRepository>();
@@ -28,6 +33,10 @@ namespace DB
             services.AddScoped<IFacilityRepository, FacilityRepository>();
             services.AddScoped<IComplaintRepository, ComplaintRepository>();
             services.AddScoped<IResidentRepository, ResidentRepository>();
+            services.AddScoped<IPasswordPolicyRepository, PasswordPolicyRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRolePermissionRepository, RolePermissionRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
             return services;
         }
     }

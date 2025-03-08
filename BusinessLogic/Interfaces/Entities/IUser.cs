@@ -12,9 +12,9 @@ namespace BusinessLogic.Interfaces.Entities
         int Id { get;  }
         UserObject Details { get; }
 
-        //bool IsAdmin { get; set; }
-
+        bool IsCSAAdmin();
+        string Role { get; }
         //bool HasRole { get; set; }
-        
+
     }
 }

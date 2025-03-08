@@ -12,7 +12,9 @@ namespace DB.Entity
         ComplaintStatus,
         CommunityType,
         ChargesType,
-        Status
+        Status,
+        Role,
+        Menu
         
     }
 }

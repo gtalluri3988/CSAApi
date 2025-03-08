@@ -77,6 +77,30 @@ namespace DB.Repositories
                 };
 
             }
+            else if (inputType == DropDown.Role.ToString())
+            {
+                return _context.Roles.Select(item => new DropdownItem
+                {
+                    Id = item.Id,
+                    Name = item.Name ?? string.Empty,
+                }).ToList() ?? new List<DropdownItem>();
+            }
+            else if (inputType == DropDown.Menu.ToString())
+            {
+                return _context.Menu.Where(x=>x.ParentId=="0").Select(item => new DropdownItem
+                {
+                    Id = item.Id,
+                    Name = item.Name ?? string.Empty,
+                }).ToList() ?? new List<DropdownItem>();
+            }
+            else if (inputType == DropDown.FacilityType.ToString())
+            {
+                return _context.FacilityType.Select(item => new DropdownItem
+                {
+                    Id = item.Id,
+                    Name = item.Name ?? string.Empty,
+                }).ToList() ?? new List<DropdownItem>();
+            }
             return new List<DropdownItem>();
 
         }

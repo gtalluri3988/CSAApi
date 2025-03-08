@@ -14,5 +14,10 @@ namespace DB.Repositories.Interfaces
         Task<FacilityDTO> AddAsync(FacilityDTO dto);
         Task UpdateAsync(int id, FacilityDTO dto);
         Task DeleteAsync(int id);
+        Task<IEnumerable<FacilityDTO>> GetAllFacilitiesAsync();
+        Task<FacilityDTO> CreateFacilityAsync(FacilityDTO dto);
+        Task<FacilityDTO> GetAllFacilityByIdAsync(int id);
+        Task UpdateFacilityAsync(int facilityId, FacilityDTO facility);
+        //Task UpdateFacilityAsync(int facilityId, FacilityDTO facility);
     }
 }

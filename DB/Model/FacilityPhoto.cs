@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.AspNetCore.Http;
+
 namespace DB.EFModel
 {
     public class FacilityPhoto : BaseEntity
@@ -7,6 +9,12 @@ namespace DB.EFModel
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }  // Primary Key
         public string? Name { get; set; }
-        public Facility? Facility { get; set; }
+        public int FacilityId { get; set; }
+        //public string? File { get; set; }
+        //[NotMapped]
+        //public IFormFile? File { get; set; }
+        public string? ImageGuid { get; set; } // 
+        public string? Preview { get; set; }
+        
     }
 }

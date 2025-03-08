@@ -1,20 +1,29 @@
 ﻿using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using DB.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using YourNamespace.Services;
 
 namespace Api.Controllers
 {
     [Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class ComplaintController : ControllerBase
+    public class ComplaintController : AuthorizedCSABaseAPIController
     {
         private readonly IComplaintService _complaintService;
+        private readonly ICurrentUserService _currentUserService;
 
-        public ComplaintController(IComplaintService complaintService)
+        public ComplaintController(
+            IComplaintService complaintService,
+            ICurrentUserService currentUserService,
+            IUserService userService,
+            ILogger<ResidentController> logger)
+            : base(userService, logger)
         {
+            _currentUserService = currentUserService;
             _complaintService = complaintService;
         }
 

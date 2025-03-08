@@ -26,6 +26,8 @@ namespace DB.Repositories
                 QueryUsers(includeInactive).Where(x => x.UserName == username.ToLower())
                 ).FirstOrDefault();
         }
+
+
         private IQueryable<Users> SelectUserAsUserObject(IQueryable<EFModel.Users> query)
         {
             return query.Select(u => new Users
@@ -35,6 +37,7 @@ namespace DB.Repositories
                 FirstName = u.Name,
                 LastName = u.Name,
                 UserName = u.UserName,
+
             });
         }
         private IQueryable<EFModel.Users> QueryUsers(bool includeInactive)
@@ -55,6 +58,82 @@ namespace DB.Repositories
             };
             _context.LoginHistory.Add(loginHistory);
             _context.SaveChanges();
+        }
+
+        public async Task<bool> CheckPassword(string Password)
+        {
+            var user = await _context.Users.Where(x => x.Password == Password).FirstOrDefaultAsync();
+            if (user != null)
+                return true;
+            else
+                return false;
+
+        }
+
+        public int? RoleForUser(int userId)
+        {
+            return _context.Users.Where(x => x.Id == userId).Select(x => x.RoleId).FirstOrDefault();
+        }
+
+        public async Task<IEnumerable<UserDTO>> GetUserListAsync()
+        {
+            return await _context.Users
+                .Select(c => new UserDTO
+                {
+                    Id = c.Id,
+                    RoleName = c.Role == null ? "" : c.Role.Name,
+                    FirstName = c.FirstName,
+                    LastName = c.LastName,
+                    RoleId = c.RoleId,
+                    Status = c.Status,
+                    Email = c.Email,
+                    LastLogin = c.LastLogin,
+                    UserName = c.UserName,
+                    BadLoginAttempt = c.BadLoginAttempt,
+                    PasswordExpiryDate = c.PasswordExpiryDate,
+                    Password = c.Password,
+                    PicturePath = c.PicturePath,
+                    Name = c.Name,
+
+                })
+                .ToListAsync();
+
+        }
+
+        public async Task<UserDTO> SaveUserAsync(UserDTO user)
+        {
+            if (userExist(user.UserName))
+            {
+                throw new Exception("User Already Exist with Same UserName");
+            }
+            var entity = _mapper.Map<EFModel.Users>(user);
+            _context.Users.Add(entity);
+            await _context.SaveChangesAsync();
+            return await GetByIdAsync(entity.Id);
+        }
+
+        private bool userExist(string? userName)
+        {
+            return _context.Users.Any(u => u.UserName == userName);
+        }
+
+        public async Task UpdateUserAsync(int userId, UserDTO user)
+        {
+            var entity = await _context.Users.FirstOrDefaultAsync(c => c.Id == userId);
+            if (entity != null)
+            {
+                entity.Name = user.Name;
+                entity.Email = user.Email;
+                entity.Password = user.Password;
+                entity.FirstName = user.FirstName;
+                entity.LastName = user.LastName;
+                entity.RoleId = user.RoleId;
+                entity.Status = user.Status;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UserName = user.UserName;
+                entity.Name = user.FirstName + " " + user.LastName;
+            }
+            await _context.SaveChangesAsync();
         }
 
 

@@ -33,14 +33,14 @@ namespace Api.Controllers
             try
             {
                 string username = HttpContext.User.Identity.Name;
-                if (string.IsNullOrEmpty(username))
+                if (!string.IsNullOrEmpty(username))
                 {
                     return _userService.GetByUsername(username);
                 }
             }
             catch (Exception ex)
             {
-
+                _logger.LogError(ex, "Error");
             }
             return null;
         }

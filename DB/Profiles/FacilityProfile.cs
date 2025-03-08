@@ -9,6 +9,7 @@ namespace DB.Profiles
     {
         public FacilityProfile()
         {
+            
             CreateMap<Facility, FacilityDTO>();
             CreateMap<FacilityDTO, Facility>();
         }

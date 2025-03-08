@@ -5,6 +5,7 @@ using BusinessLogic.Interfaces;
 using BusinessLogic.Interfaces.Entities;
 using BusinessLogic.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -28,11 +29,11 @@ public class AuthController : AuthorizedCSABaseAPIController
 
     [AllowAnonymous]
     [HttpPost()]
-    public ActionResult <CSAResponseModel<AuthenticationResponse>>Authenticate([FromBody] AuthenticationModel model)
+    public async  Task<ActionResult <CSAResponseModel<AuthenticationResponse>>>Authenticate([FromBody] AuthenticationModel model)
     {
             string clientIp = NetWorkUtils.GetClientIp(HttpContext);
             var user = _userService.Authenticate(model.Username, model.Password, out AuthenticationError loginError);
-            if (user == null)
+            if (user == null || !await _userService.CheckPassword(model.Password))
             {
                 _logger.Log(LogLevel.Debug, "Login Failed");
                 _userService.LogAuthAttempt(model.Username, clientIp, loginError.Message, null, false);
@@ -42,7 +43,10 @@ public class AuthController : AuthorizedCSABaseAPIController
                 }
                 return BadRequest(new ErrorMessage { message = "Login failed" });
             }
+
+            string Role = _userService.RoleForUser(user.Id);
             string tokenString = GenerateJwtToken(user, clientIp);
+            
             var authResponse = new AuthenticationResponse { Token = tokenString, RedirectTo = "/dashboard" };
             return new CSAResponseModel<AuthenticationResponse>(authResponse);
     }
@@ -78,6 +82,7 @@ public class AuthController : AuthorizedCSABaseAPIController
             new(ClaimTypes.Name,user.Details.UserName),
             new("FirstName",user.Details.FirstName),
             new("LastName",user.Details.LastName),
+            new(ClaimTypes.Role,user.Role),
         };
         return claims;
     }

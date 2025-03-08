@@ -12,7 +12,7 @@ namespace DB.EFModel
         public Nullable<int> ModuleId { get; set; }
         public Nullable<int> RoleId { get; set; }
         public Nullable<int> MenuId { get; set; }
-        public Nullable<int> SubMenuiId { get; set; }
+        public Nullable<int> SubMenuId { get; set; }
         public Nullable<bool> IsEdit { get; set; }
         public Nullable<bool> IsView { get; set; }
         public Nullable<bool> IsDelete { get; set; }

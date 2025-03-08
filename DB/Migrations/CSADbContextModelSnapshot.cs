@@ -302,7 +302,7 @@ namespace DB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CommunityId")
+                    b.Property<int>("CommunityId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -322,6 +322,9 @@ namespace DB.Migrations
 
                     b.Property<int?>("FacilityTypeId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Rate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -352,10 +355,16 @@ namespace DB.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("FacilityId")
+                    b.Property<int>("FacilityId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageGuid")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Preview")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -738,7 +747,7 @@ namespace DB.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("SubMenuiId")
+                    b.Property<int?>("SubMenuId")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
@@ -772,6 +781,9 @@ namespace DB.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -1135,7 +1147,9 @@ namespace DB.Migrations
                 {
                     b.HasOne("DB.EFModel.Community", "Community")
                         .WithMany()
-                        .HasForeignKey("CommunityId");
+                        .HasForeignKey("CommunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DB.EFModel.FacilityType", "FacilityType")
                         .WithMany()
@@ -1150,7 +1164,9 @@ namespace DB.Migrations
                 {
                     b.HasOne("DB.EFModel.Facility", "Facility")
                         .WithMany()
-                        .HasForeignKey("FacilityId");
+                        .HasForeignKey("FacilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Facility");
                 });
@@ -1235,7 +1251,7 @@ namespace DB.Migrations
 
             modelBuilder.Entity("DB.EFModel.VehicleDetails", b =>
                 {
-                    b.HasOne("DB.EFModel.Resident", "resident")
+                    b.HasOne("DB.EFModel.Resident", null)
                         .WithMany("VehicleDetails")
                         .HasForeignKey("ResidentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1246,8 +1262,6 @@ namespace DB.Migrations
                         .HasForeignKey("VehicleTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("resident");
 
                     b.Navigation("type");
                 });
