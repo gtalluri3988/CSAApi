@@ -13,5 +13,8 @@ namespace BusinessLogic.Interfaces
         Task<ResidentDTO> GetResidentsByResidentIdAsync(int residentId);
         Task<ResidentDTO> CreateResidentAsync(ResidentDTO dto);
         Task UpdateResidentAsync(int id, ResidentDTO dto);
+        Task<ResidentDTO> GetResidentsByNRICAsync(string nric,int communityId);
+        Task<IEnumerable<ResidentDTO>> GetAllResidentsByCommunityDropdownAsync(int communityId, string Type);
+        Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, int level, string houseNo);
     }
 }

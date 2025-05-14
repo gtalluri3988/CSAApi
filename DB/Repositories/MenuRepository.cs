@@ -2,6 +2,7 @@
 using DB.EFModel;
 using DB.Entity;
 using DB.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace DB.Repositories
 {
     public class MenuRepository : RepositoryBase<Menu, MenuDTO>, IMenuRepository
     {
-        public MenuRepository(CSADbContext context, IMapper mapper) : base(context, mapper) { }
+        public MenuRepository(CSADbContext context, IMapper mapper,IHttpContextAccessor httpContextAccessor) : base(context, mapper, httpContextAccessor) { }
 
         public async Task UpdateRoleAsync(int roleId, RoleDTO role)
         {

@@ -19,9 +19,10 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSelectListAsync(string inputType)
         {
-            var SelectList = await _dropDownService.GetSelectList(inputType);
-            return Ok(SelectList);
+            return Ok(await _dropDownService.GetSelectList(inputType));
         }
+
+
 
         
     }

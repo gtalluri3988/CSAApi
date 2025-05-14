@@ -13,12 +13,12 @@ namespace BusinessLogic.Interfaces
 {
     public interface IUserService
     {
-        IUser Authenticate(string username, string password, out AuthenticationError loginError);
+        IUser Authenticate(string username, string password,int RoleId ,out AuthenticationError loginError);
         //IUser GetByEmail(string? username);
         void LogAuthAttempt(string Username, string ip, string response,DateTime? jwtExpiryDate,bool online);
         IUser GetByUsername(string userName);
         //Task<User> GetCurrentUserAsync(string userName);
-        Task<bool> CheckPassword(string password);
+        Task<bool> CheckPassword(string password,int roleId);
         string GetUserId();
         string GetUserName();
         List<string> GetUserRoles();
@@ -27,6 +27,7 @@ namespace BusinessLogic.Interfaces
         Task<UserDTO> CreateUserAsync(UserDTO dto);
         Task UpdateUserAsync(int id, UserDTO dto);
         Task<UserDTO> GetUserByIdAsync(int id);
+        //Task<RoleDTO> RoleIdUser(int userId);
     }
     public enum AuthenticationErrorReason
     {

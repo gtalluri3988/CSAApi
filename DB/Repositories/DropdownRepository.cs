@@ -3,12 +3,13 @@ using AutoMapper;
 using DB.EFModel;
 using DB.Entity;
 using DB.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 
 namespace DB.Repositories
 {
     public class DropdownRepository : RepositoryBase<DropDownDTO, DropdownItem>, IDropdownRepository
     {
-        public DropdownRepository(CSADbContext context, IMapper mapper) : base(context, mapper) { }
+        public DropdownRepository(CSADbContext context, IMapper mapper,IHttpContextAccessor httpContextAccessor) : base(context, mapper, httpContextAccessor) { }
         public async Task<List<DropdownItem>?> GetDropdownDataAsync(string inputType)
         {
 
@@ -79,7 +80,7 @@ namespace DB.Repositories
             }
             else if (inputType == DropDown.Role.ToString())
             {
-                return _context.Roles.Select(item => new DropdownItem
+                return _context.Roles.Where(x=>x.Name!= "ResidentUser").Select(item => new DropdownItem
                 {
                     Id = item.Id,
                     Name = item.Name ?? string.Empty,
@@ -96,6 +97,22 @@ namespace DB.Repositories
             else if (inputType == DropDown.FacilityType.ToString())
             {
                 return _context.FacilityType.Select(item => new DropdownItem
+                {
+                    Id = item.Id,
+                    Name = item.Name ?? string.Empty,
+                }).ToList() ?? new List<DropdownItem>();
+            }
+            else if (inputType == DropDown.ComplaintType.ToString())
+            {
+                return _context.ComplaintType.Select(item => new DropdownItem
+                {
+                    Id = item.Id,
+                    Name = item.Name ?? string.Empty,
+                }).ToList() ?? new List<DropdownItem>();
+            }
+            else if (inputType == DropDown.PaymentStatus.ToString())
+            {
+                return _context.PaymentStatus.Select(item => new DropdownItem
                 {
                     Id = item.Id,
                     Name = item.Name ?? string.Empty,

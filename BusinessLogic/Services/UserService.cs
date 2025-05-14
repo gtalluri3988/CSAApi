@@ -13,18 +13,21 @@ namespace BusinessLogic.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IResidentRepository _residentRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public UserService(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
+        public UserService(IUserRepository userRepository, IResidentRepository residentRepository,
+            IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;
+            _residentRepository = residentRepository;
             _httpContextAccessor = httpContextAccessor;
 
         }
-        public IUser Authenticate(string email, string password, out AuthenticationError error)
+        public IUser Authenticate(string email, string password,int RoleId, out AuthenticationError error)
         {
             try
             {
-                (var user, error) = DoAuthenticate(email, password);
+                (var user, error) = DoAuthenticate(email, password, RoleId);
                 if (user != null)
                 {
                     return user;
@@ -36,7 +39,7 @@ namespace BusinessLogic.Services
             }
             return null;
         }
-        private (IUser user, AuthenticationError error) DoAuthenticate(string email, string password)
+        private  (IUser user, AuthenticationError error) DoAuthenticate(string email, string password,int RoleId)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
@@ -44,23 +47,44 @@ namespace BusinessLogic.Services
             }
             email = email.ToLower();
             var host = string.Empty;
-            
-            var useObj1 = _userRepository.GetUserByUsernameAsync(email, includeInactive: true);
-            UserObject userObject = new UserObject();
-            if (useObj1 != null)
+            if (RoleId == 0)
             {
-                userObject.Id= useObj1.Id;
-                userObject.Email = useObj1?.Email?.Trim() ?? "";
-                userObject.UserName = useObj1?.UserName?.Trim() ?? "";
-                userObject.FirstName = useObj1?.FirstName?.Trim() ?? "";
-                userObject.LastName = userObject?.LastName?.Trim() ?? "";
+                var useObj1 = _userRepository.GetUserByUsernameAsync(email, includeInactive: true);
+                UserObject userObject = new UserObject();
+                if (useObj1 != null)
+                {
+                    userObject.Id = useObj1.Id;
+                    userObject.Email = useObj1?.Email?.Trim() ?? "";
+                    userObject.UserName = useObj1?.UserName?.Trim() ?? "";
+                    userObject.FirstName = useObj1?.FirstName?.Trim() ?? "";
+                    userObject.LastName = useObj1?.LastName?.Trim() ?? "";
+                    userObject.CommunityId = useObj1.CommunityId == null ? 0 : useObj1.CommunityId.Value;
+                    userObject.RoleId = useObj1.RoleId == null ? 0 : useObj1.RoleId.Value;
+                }
+                var user = new User(userObject, this);
+                return (user, AuthenticationError.Other("Invalid Username and Password"));
             }
-            var user = new User(userObject, this);
-            return (user, AuthenticationError.Other("Invalid Username and Password"));
+            else
+            {
+                var useObj1 =_residentRepository.GetResidentsByEmailPasswordAsync(email,password);
+                UserObject userObject = new UserObject();
+                if (useObj1 != null)
+                {
+                    userObject.Id = useObj1.Id;
+                    userObject.Email = useObj1?.Email?.Trim() ?? "";
+                    userObject.UserName = useObj1?.Email?.Trim() ?? "";
+                    userObject.FirstName = useObj1?.Name?.Trim() ?? "";
+                    userObject.LastName = useObj1?.NRIC?.Trim() ?? "";
+                    userObject.CommunityId = useObj1.CommunityId;
+                    userObject.RoleId = useObj1.RoleId;
+                }
+                var user = new User(userObject, this);
+                return (user, AuthenticationError.Other("Invalid Username and Password"));
+            }
         }
-        public async Task<bool> CheckPassword(string password)
+        public async Task<bool> CheckPassword(string password,int roleId)
         {
-           return await _userRepository.CheckPassword(password);
+           return await _userRepository.CheckPassword(password, roleId);
             
         }
 
@@ -96,7 +120,15 @@ namespace BusinessLogic.Services
             }
             return role;
         }
-
+        //public async Task<RoleDTO> RoleIdUser(int userId)
+        //{
+        //    var roleId = await _userRepository.GetRoleAsync(userId);
+        //    if (roleId == null)
+        //    {
+        //        throw new KeyNotFoundException($"No role found for user with ID {userId}");
+        //    }
+        //    return roleId;
+        //}
         public string GetUserId()
         {
             return _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

@@ -39,38 +39,34 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPasswordPolicyDetails()
         {
-            var PasswordPolicy = await _passwordPolicyService.GetAllPasswordPolicyAsync();
-            return Ok(PasswordPolicy);
+            return Ok(await _passwordPolicyService.GetAllPasswordPolicyAsync());
         }
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> UpdatePasswordPolicy(List<PasswordPolicyDTO> policy)
         {
-            var PasswordPolicy = await _passwordPolicyService.SavePasswordPolicyAsync(policy);
-            return Ok(PasswordPolicy);
+            return Ok(await _passwordPolicyService.SavePasswordPolicyAsync(policy));
         }
 
 
         [HttpGet]
         public async Task<IActionResult> GetAllRoles()
         {
-            var roles = await _roleService.GetAllRolesAsync();
-            return Ok(roles);
+            return Ok(await _roleService.GetAllRolesAsync());
         }
-        [HttpPut]
+        [HttpGet]
         public async Task<IActionResult> GetRoleById(int roleId)
         {
-            var roles = await _roleService.GetRoleByIdAsync(roleId);
-            return Ok(roles);
+            return Ok(await _roleService.GetRoleByIdAsync(roleId));
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> SaveRole(RoleDTO role)
         {
             await _roleService.SaveRoleAsync(role);
             return Ok(true);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> UpdateRole(int roleId,RoleDTO role)
         {
             await _roleService.UpdateRoleAsync(roleId,role);
@@ -83,16 +79,9 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllMenuRolePermission()
         {
-            var MenuRoles = await _roleMenuPermissionervice.GetAllMenuRolesAsync();
-            return Ok(MenuRoles);
+            return Ok(await _roleMenuPermissionervice.GetAllMenuRolesAsync());
         }
-        //[HttpPut]
-        //public async Task<IActionResult> GetMenuById(int roleId)
-        //{
-        //    var roles = await _roleMenuPermissionervice.GetRoleByIdAsync(roleId);
-        //    return Ok(roles);
-        //}
-
+        
         [HttpPost]
         public async Task<IActionResult> SaveMenuRolePermission(RoleMenuPermissionDTO roleMenuPermissionDTO)
         {
@@ -107,7 +96,7 @@ namespace Api.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> UpdateRoleMenuPermission(int id, RoleMenuPermissionDTO roleMenuPermissionDTO)
         {
             try
@@ -125,15 +114,20 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllMenu()
         {
-            var roles = await _menuService.GetAllMenusAsync();
-            return Ok(roles);
+            return Ok(await _menuService.GetAllMenusAsync());
         }
 
         [HttpGet]
         public async Task<IActionResult> GetSubMenuListByMenuId(int subMenuId)
         {
-            var SubMenu = await _menuService.GetSubMenuList(subMenuId);
-            return Ok(SubMenu);
+            return Ok(await _menuService.GetSubMenuList(subMenuId));
+        }
+        
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllMenusByRole(int roleId)
+        {
+            return Ok(await _roleMenuPermissionervice.GetAllMenusByRolesAsync(roleId));
         }
 
     }

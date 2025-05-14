@@ -14,5 +14,9 @@ namespace BusinessLogic.Models.Users
         public string Email { get; set; }
         public string UserName { get; set; }
 
+        public int CommunityId { get; set; }
+
+        public int RoleId { get; set; }
+
     }
 }

@@ -106,3 +106,4 @@ C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\A
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.pdb
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.genruntimeconfig.cache
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\ref\Api.dll
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Debug\net7.0\Api.MvcApplicationPartsAssemblyInfo.cs

@@ -10,6 +10,8 @@ namespace DB.Entity
         VisitorAccessType,
         FacilityType,
         ComplaintStatus,
+        ComplaintType,
+        PaymentStatus,
         CommunityType,
         ChargesType,
         Status,

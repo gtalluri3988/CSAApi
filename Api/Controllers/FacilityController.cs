@@ -29,8 +29,7 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllFacility()
         {
-            var Facilities = await _facilityService.GetAllFacilityAsync();
-            return Ok(Facilities);
+            return Ok(await _facilityService.GetAllFacilityAsync());
         }
 
         [HttpGet]
@@ -49,7 +48,7 @@ namespace Api.Controllers
             return CreatedAtAction(nameof(GetFacilityById), new { id = createdVisitor.Id }, createdVisitor);
         }
 
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public async Task<IActionResult> UpdateFacility(int id, FacilityDTO dto)
         {
             await _facilityService.UpdateFacilityAsync(id, dto);
@@ -61,6 +60,12 @@ namespace Api.Controllers
         {
             await _facilityService.DeleteFacilityAsync(id);
             return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchFacility(int communityId,int facilityTypeId)
+        {
+            return Ok(await _facilityService.SearchFacilityAsync(communityId, facilityTypeId));
         }
     }
 }

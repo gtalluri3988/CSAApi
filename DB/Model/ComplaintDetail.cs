@@ -19,6 +19,8 @@ namespace DB.EFModel
 
         public Resident? Resident { get; set; }
 
+        public List<ComplaintPhotos> ComplaintPhotos { get; set; } = new List<ComplaintPhotos>();
+
     }
 
 }

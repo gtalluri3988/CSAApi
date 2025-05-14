@@ -3,6 +3,7 @@
 namespace DB.Repositories
 {
     using AutoMapper;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -12,14 +13,19 @@ namespace DB.Repositories
         protected readonly CSADbContext _context;
         protected readonly IMapper _mapper;
         private readonly DbSet<TEntity> _dbSet;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public RepositoryBase(CSADbContext context, IMapper mapper)
+        public RepositoryBase(CSADbContext context, IMapper mapper,IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
             _dbSet = _context.Set<TEntity>();
         }
-
+        public string GetCurrentUserId()
+        {
+            return _httpContextAccessor.HttpContext?.User?.FindFirst("userid")?.Value ?? "Unknown";
+        }
         public async Task<IEnumerable<TDto>> GetAllAsync()
         {
             var entities = await _dbSet.ToListAsync();

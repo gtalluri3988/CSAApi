@@ -33,24 +33,16 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllResidentsByCommunity(int communityId)
         {
-            var Residents = await _residentService.GetAllResidentsByCommunityAsync(communityId);
-            return Ok(Residents);
+            
+            return Ok(await _residentService.GetAllResidentsByCommunityAsync(communityId));
         }
         [HttpGet]
         public async Task<IActionResult> GetResidentsByResidentId(int residentId)
         {
-            //if (CurrentUser != null)
-            //{
-            //}
             var Residents = await _residentService.GetResidentsByResidentIdAsync(residentId);
-            return Ok(Residents);
+            return Ok(await _residentService.GetResidentsByResidentIdAsync(residentId));
         }
-        //[HttpPost]
-        //public async Task<IActionResult> SaveResident([FromBody] CommunityObject community)
-        //{
-        //    var Community = await _communityService.GetCommunityTypeList();
-        //    return Ok(Community);
-        //}
+      
         [HttpPost]
         public async Task<IActionResult> CreateResident(ResidentDTO residentModel)
         {
@@ -58,11 +50,32 @@ namespace Api.Controllers
             var createdResident = await _residentService.CreateResidentAsync(residentModel);
             return CreatedAtAction(nameof(GetResidentsByResidentId), new { id = createdResident.Id }, createdResident);
         }
-        [HttpPut("{id}")]
+        [HttpPost]
         public async Task<IActionResult> UpdateResident(int id, ResidentDTO dto)
         {
             await _residentService.UpdateResidentAsync(id, dto);
             return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetResidentByNric(string nric,int communityId)
+        {
+            return Ok(await _residentService.GetResidentsByNRICAsync(nric, communityId));
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllResidentsByCommunityDropdown(int communityId)
+        {
+
+            return Ok(await _residentService.GetAllResidentsByCommunityDropdownAsync(communityId, ""));
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, int level, string houseNo)
+        {
+            return Ok(await _residentService.GetResidentsNameandContactByAddresses(roadNo, blockNo, level, houseNo));
         }
     }
 }

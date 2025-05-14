@@ -3,6 +3,7 @@ using Azure.Core;
 using DB.EFModel;
 using DB.Entity;
 using DB.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Buffers.Text;
@@ -13,13 +14,21 @@ namespace DB.Repositories
     public class FacilityRepository : RepositoryBase<Facility, FacilityDTO>, IFacilityRepository
     {
         
-        public FacilityRepository(CSADbContext context, IMapper mapper) : base(context, mapper) { }
+        public FacilityRepository(CSADbContext context, IMapper mapper,IHttpContextAccessor httpContextAccessor) : base(context, mapper, httpContextAccessor) { }
 
 
         public async Task<IEnumerable<FacilityDTO>> GetAllFacilitiesAsync()
         {
-            var residents = await _context.Facility.Include(c => c.FacilityType).Include(x=>x.Community).ToListAsync();
-            return _mapper.Map<IEnumerable<FacilityDTO>>(residents);
+            var Facilities = await _context.Facility.Include(c => c.FacilityType).Include(x=>x.Community).ToListAsync();
+            return _mapper.Map<IEnumerable<FacilityDTO>>(Facilities);
+        }
+
+        public async Task<IEnumerable<FacilityDTO>> SearchFacilitiesAsync(int communityId,int facilityTypeId)
+        {
+            var Facilities = await _context.Facility.Include(c => c.FacilityType).Include(x => x.Community).Where(x =>
+        (facilityTypeId == 0 || x.FacilityTypeId == facilityTypeId) &&
+        (communityId == 0 || x.CommunityId == communityId)).ToListAsync();
+            return _mapper.Map<IEnumerable<FacilityDTO>>(Facilities);
         }
 
         public async Task<FacilityDTO> CreateFacilityAsync(FacilityDTO dto)

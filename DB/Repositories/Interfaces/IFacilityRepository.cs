@@ -19,5 +19,6 @@ namespace DB.Repositories.Interfaces
         Task<FacilityDTO> GetAllFacilityByIdAsync(int id);
         Task UpdateFacilityAsync(int facilityId, FacilityDTO facility);
         //Task UpdateFacilityAsync(int facilityId, FacilityDTO facility);
+        Task<IEnumerable<FacilityDTO>> SearchFacilitiesAsync(int communityId, int facilityTypeId);
     }
 }

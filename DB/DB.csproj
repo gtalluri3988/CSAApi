@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\NewFolder\**" />
     <Compile Remove="Repositories\Services\**" />
+    <EmbeddedResource Remove="Repositories\NewFolder\**" />
     <EmbeddedResource Remove="Repositories\Services\**" />
+    <None Remove="Repositories\NewFolder\**" />
     <None Remove="Repositories\Services\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -34,7 +38,6 @@
   <ItemGroup>
     <Folder Include="ReleaseScripts\2025R1\08. ID-6459\" />
     <Folder Include="ReleaseScripts\2025R1\09. ID-6460\" />
-    <Folder Include="Repositories\NewFolder\" />
   </ItemGroup>
 
 </Project>

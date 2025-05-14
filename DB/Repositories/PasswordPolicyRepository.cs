@@ -2,6 +2,7 @@
 using DB.EFModel;
 using DB.Entity;
 using DB.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace DB.Repositories
 {
     public class PasswordPolicyRepository : RepositoryBase<PasswordPolicy, PasswordPolicyDTO>, IPasswordPolicyRepository
     {
-        public PasswordPolicyRepository(CSADbContext context, IMapper mapper) : base(context, mapper) { }
+        public PasswordPolicyRepository(CSADbContext context, IMapper mapper,IHttpContextAccessor httpContextAccessor) : base(context, mapper, httpContextAccessor) { }
 
 
         public async Task<IEnumerable<PasswordPolicyDTO>> GetAllPasswordPolicyDetails()

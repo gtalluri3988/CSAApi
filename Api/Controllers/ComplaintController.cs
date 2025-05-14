@@ -30,8 +30,7 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllComplaints()
         {
-            var Complaints = await _complaintService.GetAllComplaintAsync();
-            return Ok(Complaints);
+            return Ok(await _complaintService.GetAllComplaintAsync());
         }
 
         [HttpGet("{id}")]
@@ -46,11 +45,11 @@ namespace Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateComplaint(ComplaintDTO dto)
         {
-            var createdVisitor = await _complaintService.CreateComplaintAsync(dto);
-            return CreatedAtAction(nameof(GetComplaintById), new { id = createdVisitor.Id }, createdVisitor);
+            var createdComplaint = await _complaintService.CreateComplaintAsync(dto);
+            return CreatedAtAction(nameof(GetComplaintById), new { id = createdComplaint.Id }, createdComplaint);
         }
 
-        [HttpPut("{id}")]
+        [HttpPost]
         public async Task<IActionResult> UpdateComplaint(int id, ComplaintDTO dto)
         {
             await _complaintService.UpdateComplaintAsync(id, dto);

@@ -11,19 +11,24 @@ namespace DB.EFModel
         public string? Name { get; set; }
         public string? LotNo { get; set; }
         public int Level { get; set; }
+        public int? RoleId { get; set; }
         public string? BlockNo { get; set; }
         public string? RoadNo { get; set; }
         public string? NRIC { get; set; }
         public string? PhoneNo { get; set; }
         public string? Email { get; set; }
+        public string? Password { get; set; }
         public int CommunityId { get; set; }
         public int ParkingLotQty { get; set; }
         public int ParkingLotNos { get; set; }
-        public int MaintenenceFeesCost { get; set; }     
+        public int MaintenenceFeesCost { get; set; }
+        public string? ContactPerson1 { get; set; }
+        public string? ContactPerson2 { get; set; }
         public List<VehicleDetails> VehicleDetails { get; set; } = new List<VehicleDetails>();
         public State? State { get; set; }
+        public Roles? Role { get; set; }
 
-       
+        public List<ResidencePaymentDetails>? ResidencePaymentDetails { get; set; }
     }
 
 

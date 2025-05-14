@@ -26,6 +26,11 @@ namespace DB
             services.AddAutoMapper(typeof(RoleProfile));
             services.AddAutoMapper(typeof(RoleMenuPermission));
             services.AddAutoMapper(typeof(MenuProfile));
+            services.AddAutoMapper(typeof(ContentProfile));
+            services.AddAutoMapper(typeof(CardProfile));
+            services.AddAutoMapper(typeof(PaymentProfile));
+            services.AddAutoMapper(typeof(EventProfile));
+            services.AddAutoMapper(typeof(ResidentAccessHistoryProfile));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICommunityRepository, CommunityRepository>();
             services.AddScoped<IDropdownRepository, DropdownRepository>();
@@ -37,6 +42,12 @@ namespace DB
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IRolePermissionRepository, RolePermissionRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<IContentRepository, ContentRepository>();
+            services.AddScoped<ICardRepository, CardRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
+            services.AddScoped<IResidentAccessHistoryRepository, ResidentAccessHistoryRepository>();
             return services;
         }
     }

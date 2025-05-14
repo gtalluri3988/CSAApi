@@ -17,6 +17,10 @@ namespace DB.Profiles
             CreateMap<Resident, ResidentDTO>();
             CreateMap<ResidentDTO, Resident>();
 
+            CreateMap<Resident, ResidentDTO>()
+            .ForMember(dest => dest.StateName, opt => opt.MapFrom(src => src.State.Name))
+            .ForMember(dest => dest.PaymentStatus, opt => opt.Ignore()); // Set manually later
+
         }
     }
 }

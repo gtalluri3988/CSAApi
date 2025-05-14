@@ -2,6 +2,7 @@
 using DB.EFModel;
 using DB.Entity;
 using DB.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,26 +14,95 @@ namespace DB.Repositories
 {
     public class ResidentRepository : RepositoryBase<Resident, ResidentDTO>, IResidentRepository
     {
-        public ResidentRepository(CSADbContext context, IMapper mapper) : base(context, mapper) { }
+        public ResidentRepository(CSADbContext context, IMapper mapper,IHttpContextAccessor httpContextAccessor) : base(context, mapper, httpContextAccessor) { }
 
 
         public async Task<IEnumerable<ResidentDTO>> GetAllResidentsByCommunityIdAsync(int communityId)
         {
-            var residents = await _context.Resident.Include(c => c.State).Where(x => x.CommunityId == communityId).ToListAsync();
-            return _mapper.Map<IEnumerable<ResidentDTO>>(residents);
+            //var residents = await _context.Resident.Include(c => c.State).Include(c=>c.ResidencePaymentDetails).Where(x => x.CommunityId == communityId).ToListAsync();
+            var currentMonth = DateTime.UtcNow.Month;
+            var currentYear = DateTime.UtcNow.Year;
+
+            var residents = await _context.Resident
+                .Include(r => r.State)
+                .Include(r => r.ResidencePaymentDetails)
+                    .ThenInclude(p => p.PaymentStatus)
+                .Where(r => r.CommunityId == communityId)
+                .ToListAsync();
+
+            // Map all residents
+            var residentDtos = _mapper.Map<List<ResidentDTO>>(residents);
+
+            // Attach PaymentStatus manually
+            foreach (var dto in residentDtos)
+            {
+                var entity = residents.First(r => r.Id == dto.Id);
+                var payment = entity.ResidencePaymentDetails?
+                    .FirstOrDefault(p =>
+                        p.PaymentDate.HasValue &&
+                        p.PaymentDate.Value.Month == currentMonth &&
+                        p.PaymentDate.Value.Year == currentYear);
+
+                dto.PaymentStatus = payment?.PaymentStatus?.Name ?? "Awaiting Payment";
+            }
+
+            return residentDtos;
         }
 
         public async Task<ResidentDTO> SaveResidentAsync(ResidentDTO resident)
         {
             var entity = _mapper.Map<EFModel.Resident>(resident);
-            _context.Resident.Add(entity);
-            await _context.SaveChangesAsync();
+            try
+            {
+                entity.RoleId = 5;
+                _context.Resident.Add(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
             return await GetByIdAsync(entity.Id);
+        }
+
+        public async Task<List<ResidentDTO>> GetResidentsDropdownsAsync(int communityId,string Type)
+        {
+            try
+            {
+                IQueryable<Resident> query = _context.Resident;
+
+                if (communityId != 0)
+                {
+                    query = query.Where(x => x.CommunityId == communityId);
+                }
+
+                var residents = await query
+                    .Select(x => new ResidentDTO
+                    {
+                        BlockNo = x.BlockNo,
+                        HouseNo = x.HouseNo,
+                        RoadNo = x.RoadNo,
+                        Level = x.Level
+                    })
+                    .ToListAsync();
+
+                return residents;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public async Task<ResidentDTO> GetResidentsByResidentIdAsync(int residentId)
         {
             var residents = await _context.Resident.Where(x => x.Id == residentId).Include(x=>x.VehicleDetails).FirstOrDefaultAsync();
+            return _mapper.Map<ResidentDTO>(residents);
+        }
+
+        public  ResidentDTO GetResidentsByEmailPasswordAsync(string Email,string Password)
+        {
+            var residents =  _context.Resident.Where(x => x.Email == Email && x.Password==Password).FirstOrDefault();
             return _mapper.Map<ResidentDTO>(residents);
         }
         public async Task UpdateResidenAsync(int residentId, ResidentDTO resident)
@@ -77,6 +147,20 @@ namespace DB.Repositories
             }
             await _context.SaveChangesAsync();
 
+        }
+
+        public async Task<ResidentDTO> GetResidentsByNRICAsync(string nric,int communityId)
+        {
+            var residents = await _context.Resident.Where(x => x.NRIC == nric && x.CommunityId== communityId).FirstOrDefaultAsync();
+
+            return _mapper.Map<ResidentDTO>(residents);
+        }
+
+        public async Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, int level, string houseNo)
+        {
+            var residents = await _context.Resident.Where(x => x.RoadNo == roadNo && x.BlockNo == blockNo && x.Level==level && x.HouseNo==houseNo).FirstOrDefaultAsync();
+
+            return _mapper.Map<ResidentDTO>(residents);
         }
 
 

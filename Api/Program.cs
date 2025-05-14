@@ -54,6 +54,12 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<IRoleMenuPermissionService, RoleMenuPermissionService>();
+builder.Services.AddScoped<IContentService, ContentService>();
+builder.Services.AddScoped<ICardService, CardService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<IResidentAccessHistoryService, ResidentAccessHistoryService>();
 
 //builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddControllers();
@@ -122,11 +128,16 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

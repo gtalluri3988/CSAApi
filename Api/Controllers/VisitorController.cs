@@ -21,8 +21,7 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllVisitors()
         {
-            var Visitors = await _visitorService.GetAllVisitorsAsync();
-            return Ok(Visitors);
+            return Ok(await _visitorService.GetAllVisitorsAsync());
         }
 
         [HttpGet("{id}")]
@@ -41,7 +40,7 @@ namespace Api.Controllers
             return CreatedAtAction(nameof(GetVisitorById), new { id = createdVisitor.Id }, createdVisitor);
         }
 
-        [HttpPut("{id}")]
+        [HttpPost]
         public async Task<IActionResult> UpdateVisitor(int id, VisitorAccessDetailsDTO dto)
         {
             await _visitorService.UpdateVisitorAsync(id, dto);

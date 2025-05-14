@@ -22,17 +22,17 @@ namespace BusinessLogic.Services
 
         public async Task<ComplaintDTO> GetComplaintByIdAsync(int id)
         {
-            return await _complaintRepository.GetByIdAsync(id);
+            return await _complaintRepository.GetComplaintByComplaintIdAsync(id);
         }
 
         public async Task<ComplaintDTO> CreateComplaintAsync(ComplaintDTO dto)
         {
-            return await _complaintRepository.AddAsync(dto);
+            return await _complaintRepository.CreateComplaintAsync(dto);
         }
 
         public async Task UpdateComplaintAsync(int id, ComplaintDTO dto)
         {
-            await _complaintRepository.UpdateAsync(id, dto);
+            await _complaintRepository.UpdateComplaintAsync(id, dto);
         }
 
         public async Task DeleteComplaintAsync(int id)

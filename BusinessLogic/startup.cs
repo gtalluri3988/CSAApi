@@ -18,6 +18,7 @@ namespace BusinessLogic
             //services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDropDownService, DropDownService>();
+            services.AddScoped<ICardService, CardService>();
             return services;
         }
     }

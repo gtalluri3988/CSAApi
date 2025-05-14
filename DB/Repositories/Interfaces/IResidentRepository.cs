@@ -21,5 +21,9 @@ namespace DB.Repositories.Interfaces
 
         Task<ResidentDTO> SaveResidentAsync(ResidentDTO resident);
         Task UpdateResidenAsync(int residentId, ResidentDTO resident);
+        Task<ResidentDTO> GetResidentsByNRICAsync(string nric, int communityId);
+        ResidentDTO GetResidentsByEmailPasswordAsync(string Email, string Password);
+        Task<List<ResidentDTO>> GetResidentsDropdownsAsync(int communityId, string Type);
+        Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, int level, string houseNo);
     }
 }

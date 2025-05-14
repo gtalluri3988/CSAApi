@@ -22,5 +22,6 @@ namespace DB.Repositories.Interfaces
         //Task<RoleMenuPermissionDTO> CreateMenuRoleAsync(RoleMenuPermissionDTO dto);
         //Task UpdateMenuRoleAsync(int id, RoleMenuPermissionDTO dto);
         //Task DeleteMenuRoleAsync(int id);
+        Task<IEnumerable<MenuResponseDto>> GetRolesMenu(int roleId);
     }
 }

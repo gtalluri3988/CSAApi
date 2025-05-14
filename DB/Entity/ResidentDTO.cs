@@ -20,13 +20,19 @@ namespace DB.Entity
         public string? NRIC { get; set; }
         public string? PhoneNo { get; set; }
         public string? Email { get; set; }
+        public string? Password { get; set; }
+        public string? StateName { get; set; }
+        public string? PaymentStatus { get; set; }
+        public int RoleId { get; set; }
         public int CommunityId { get; set; }
         public int ParkingLotQty { get; set; }
         public int ParkingLotNos { get; set; }
         public int MaintenenceFeesCost { get; set; }
+        public string? ContactPerson1 { get; set; }
+        public string? ContactPerson2 { get; set; }
         public List<VehicleDetails>? VehicleDetails { get; set; }
         public State? State { get; set; }
-
+        public List<ResidencePaymentDetails>? ResidencePaymentDetails { get; set; }
         public Community? Community { get; set; }
 
     }

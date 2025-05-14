@@ -22,5 +22,7 @@ namespace BusinessLogic.Interfaces
         Task<IEnumerable<CommunityDTO>> GetAllCommunitiesWithStatesAsync();
 
         Task<IEnumerable<CommunityResidentCountDto>> GetCommunitiesWithResidentCountAsync();
+        Task<string> GetNextNumberAsync();
+        Task<IEnumerable<DropDownDTO>> GetCityByStateAsync(int stateId);
     }
 }

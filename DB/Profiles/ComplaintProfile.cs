@@ -33,6 +33,11 @@ namespace DB.Profiles
 
             CreateMap<ComplaintDetail, ComplaintDTO>();
             CreateMap<ComplaintDTO, ComplaintDetail>();
+
+           
+            CreateMap<ResidentDTO, Resident>(); // Map ResidentDTO to Resident automatically
+
+           
         }
     }
 }

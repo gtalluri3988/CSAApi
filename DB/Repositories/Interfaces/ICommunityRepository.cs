@@ -20,5 +20,8 @@ namespace DB.Repositories.Interfaces
 
         Task UpdateCommunityAsync(int communityId, CommunityDTO community);
         Task<List<CommunityResidentCountDto>> GetAllCommunityWithResidentListAsync();
+        Task<string> IncrementAndGetNextNumberAsync();
+        Task<IEnumerable<DropDownDTO>> GetCityByStateAsync(int stateId);
+        Task<bool> DeleteCommunity(int communityId);
     }
 }

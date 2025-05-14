@@ -17,5 +17,6 @@ namespace BusinessLogic.Interfaces
         Task<RoleMenuPermissionDTO> CreateMenuRoleAsync(RoleMenuPermissionDTO dto);
         Task<IEnumerable<RoleMenuPermissionDTO>> GetAllMenuRolesAsync();
         Task UpdateMenuRoleAsync(int id, RoleMenuPermissionDTO dto);
+        Task<IEnumerable<MenuResponseDto>> GetAllMenusByRolesAsync(int roleId);
     }
 }

@@ -66,7 +66,11 @@ namespace BusinessLogic.Services
             return await _communityRepository.SaveCommunityAsync(dto);
         }
 
-        
+        public async Task<string> GetNextNumberAsync()
+        {
+            return await _communityRepository.IncrementAndGetNextNumberAsync();
+            
+        }
 
         public async Task UpdateCommunityAsync(int id, CommunityDTO dto)
         {
@@ -75,7 +79,7 @@ namespace BusinessLogic.Services
 
         public async Task DeleteCommunityAsync(int id)
         {
-            await _communityRepository.DeleteAsync(id);
+            await _communityRepository.DeleteCommunity(id);
         }
 
         public async Task<IEnumerable<CommunityDTO>> GetAllCommunitiesWithStatesAsync()
@@ -86,6 +90,10 @@ namespace BusinessLogic.Services
         public async Task<IEnumerable<CommunityResidentCountDto>> GetCommunitiesWithResidentCountAsync()
         {
             return await _communityRepository.GetAllCommunityWithResidentListAsync();
+        }
+        public async Task<IEnumerable<DropDownDTO>> GetCityByStateAsync(int stateId)
+        {
+            return await _communityRepository.GetCityByStateAsync(stateId);
         }
 
     }

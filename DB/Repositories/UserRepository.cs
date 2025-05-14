@@ -3,12 +3,13 @@ using DB.EFModel;
 using DB.Repositories.Interfaces;
 using AutoMapper;
 using DB.Entity;
+using Microsoft.AspNetCore.Http;
 
 namespace DB.Repositories
 {
     public class UserRepository : RepositoryBase<Users, UserDTO>, IUserRepository
     {
-        public UserRepository(CSADbContext context, IMapper mapper) : base(context, mapper) { }
+        public UserRepository(CSADbContext context, IMapper mapper,IHttpContextAccessor httpContextAccessor) : base(context, mapper, httpContextAccessor) { }
         public async Task<Users?> GetUserByUsernameAsync(string username)
         {
             try
@@ -37,6 +38,8 @@ namespace DB.Repositories
                 FirstName = u.Name,
                 LastName = u.Name,
                 UserName = u.UserName,
+                CommunityId=u.CommunityId,
+                RoleId=u.RoleId,
 
             });
         }
@@ -60,13 +63,32 @@ namespace DB.Repositories
             _context.SaveChanges();
         }
 
-        public async Task<bool> CheckPassword(string Password)
+        public async Task<bool> CheckPassword(string Password,int roleId)
         {
-            var user = await _context.Users.Where(x => x.Password == Password).FirstOrDefaultAsync();
-            if (user != null)
-                return true;
+            if (roleId == 0)
+            {
+                var user = await _context.Users.Where(x => x.Password == Password).FirstOrDefaultAsync();
+                if (user == null)
+                {
+                    throw new Exception("Invalid username or password");
+                }
+                if (user != null)
+                    return true;
+                else
+                    return false;
+            }
             else
-                return false;
+            {
+                var user = await _context.Resident.Where(x => x.Password == Password).FirstOrDefaultAsync();
+                if (user == null)
+                {
+                    throw new Exception("Invalid username or password");
+                }
+                if (user != null)
+                    return true;
+                else
+                    return false;
+            }
 
         }
 
@@ -74,6 +96,18 @@ namespace DB.Repositories
         {
             return _context.Users.Where(x => x.Id == userId).Select(x => x.RoleId).FirstOrDefault();
         }
+
+        //public async Task<RoleDTO?> GetRoleAsync(int userId) // Nullable return type
+        //{
+        //    return await _context.Users
+        //        .Where(c => c.Id == userId) // Filter first for efficiency
+        //        .Select(c => new RoleDTO
+        //        {
+        //            Id = c.Id,
+        //            Name = c.Name ?? "" // Ensure Name is not null
+        //        })
+        //        .FirstOrDefaultAsync();
+        //}
 
         public async Task<IEnumerable<UserDTO>> GetUserListAsync()
         {
@@ -131,6 +165,7 @@ namespace DB.Repositories
                 entity.Status = user.Status;
                 entity.UpdatedDate = DateTime.Now;
                 entity.UserName = user.UserName;
+                entity.CommunityId=user.CommunityId;
                 entity.Name = user.FirstName + " " + user.LastName;
             }
             await _context.SaveChangesAsync();

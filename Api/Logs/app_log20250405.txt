@@ -1,0 +1,7 @@
+2025-04-05 21:54:45.212 +05:30 [INF] Now listening on: https://localhost:7225
+2025-04-05 21:54:45.284 +05:30 [INF] Now listening on: http://localhost:5130
+2025-04-05 21:54:45.291 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-05 21:54:45.294 +05:30 [INF] Hosting environment: Development
+2025-04-05 21:54:45.296 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-04-05 21:54:47.894 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-04-05 21:54:48.226 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 404 0 - 336.0984ms

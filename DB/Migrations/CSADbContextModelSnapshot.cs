@@ -22,6 +22,45 @@ namespace DB.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DB.EFModel.Card", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AssignDatetime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CardNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ResidentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResidentId");
+
+                    b.ToTable("Card");
+                });
+
             modelBuilder.Entity("DB.EFModel.ChargesType", b =>
                 {
                     b.Property<int>("Id")
@@ -39,6 +78,27 @@ namespace DB.Migrations
                     b.ToTable("ChargesType");
                 });
 
+            modelBuilder.Entity("DB.EFModel.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StateId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("City");
+                });
+
             modelBuilder.Entity("DB.EFModel.Community", b =>
                 {
                     b.Property<int>("Id")
@@ -49,6 +109,12 @@ namespace DB.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CardGuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CityName")
                         .HasColumnType("nvarchar(max)");
@@ -99,6 +165,8 @@ namespace DB.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityId");
 
                     b.HasIndex("CommunityTypeId");
 
@@ -178,6 +246,45 @@ namespace DB.Migrations
                     b.ToTable("ComplaintDetail");
                 });
 
+            modelBuilder.Entity("DB.EFModel.ComplaintPhotos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("ComplaintDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageGuid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Preview")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ComplaintDetailId");
+
+                    b.ToTable("ComplaintPhotos");
+                });
+
             modelBuilder.Entity("DB.EFModel.ComplaintStatus", b =>
                 {
                     b.Property<int>("Id")
@@ -230,7 +337,7 @@ namespace DB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CommunityId")
+                    b.Property<int>("CommunityId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -269,7 +376,7 @@ namespace DB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ContentManagementId")
+                    b.Property<int>("ContentManagementId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -278,7 +385,16 @@ namespace DB.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ImageGuid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Preview")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -292,6 +408,50 @@ namespace DB.Migrations
                     b.HasIndex("ContentManagementId");
 
                     b.ToTable("ContentPicture");
+                });
+
+            modelBuilder.Entity("DB.EFModel.EventDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CommunityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EventDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EventEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EventStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ResidentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommunityId");
+
+                    b.HasIndex("ResidentId");
+
+                    b.ToTable("EventDetails");
                 });
 
             modelBuilder.Entity("DB.EFModel.Facility", b =>
@@ -320,7 +480,7 @@ namespace DB.Migrations
                     b.Property<string>("FacilityName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FacilityTypeId")
+                    b.Property<int>("FacilityTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Rate")
@@ -496,6 +656,42 @@ namespace DB.Migrations
                     b.ToTable("Menu");
                 });
 
+            modelBuilder.Entity("DB.EFModel.Notifications", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ResidentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResidentId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("DB.EFModel.PasswordPolicy", b =>
                 {
                     b.Property<int>("Id")
@@ -519,6 +715,34 @@ namespace DB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PasswordPolicy");
+                });
+
+            modelBuilder.Entity("DB.EFModel.PaymentStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaymentStatus");
                 });
 
             modelBuilder.Entity("DB.EFModel.PaymentType", b =>
@@ -557,6 +781,9 @@ namespace DB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -565,6 +792,12 @@ namespace DB.Migrations
 
                     b.Property<DateTime?>("PaymentDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentRef")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PaymentStatusId")
+                        .HasColumnType("int");
 
                     b.Property<int>("PaymentTypeId")
                         .HasColumnType("int");
@@ -579,6 +812,8 @@ namespace DB.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PaymentStatusId");
 
                     b.HasIndex("PaymentTypeId");
 
@@ -600,6 +835,12 @@ namespace DB.Migrations
 
                     b.Property<int>("CommunityId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ContactPerson1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactPerson2")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -634,11 +875,17 @@ namespace DB.Migrations
                     b.Property<int>("ParkingLotQty")
                         .HasColumnType("int");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoadNo")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("StateId")
                         .HasColumnType("int");
@@ -653,6 +900,8 @@ namespace DB.Migrations
 
                     b.HasIndex("CommunityId");
 
+                    b.HasIndex("RoleId");
+
                     b.HasIndex("StateId");
 
                     b.ToTable("Resident");
@@ -665,9 +914,6 @@ namespace DB.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("BlockNo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CommunityId")
                         .HasColumnType("int");
@@ -684,14 +930,8 @@ namespace DB.Migrations
                     b.Property<DateTime?>("ExitTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("HouseNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LevelNo")
+                    b.Property<int?>("ResidentId")
                         .HasColumnType("int");
-
-                    b.Property<string>("RoadNo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TemporaryAccess")
                         .HasColumnType("bit");
@@ -702,12 +942,20 @@ namespace DB.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ValidTo")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("VehicleNo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CommunityId");
+
+                    b.HasIndex("ResidentId");
 
                     b.ToTable("ResidentAccessHistory");
                 });
@@ -825,6 +1073,9 @@ namespace DB.Migrations
                     b.Property<int?>("BadLoginAttempt")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CommunityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -871,6 +1122,8 @@ namespace DB.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommunityId");
 
                     b.HasIndex("RoleId");
 
@@ -1081,8 +1334,32 @@ namespace DB.Migrations
                     b.ToTable("VisitorParkingCharge");
                 });
 
+            modelBuilder.Entity("DB.EFModel.Card", b =>
+                {
+                    b.HasOne("DB.EFModel.Resident", "Resident")
+                        .WithMany()
+                        .HasForeignKey("ResidentId");
+
+                    b.Navigation("Resident");
+                });
+
+            modelBuilder.Entity("DB.EFModel.City", b =>
+                {
+                    b.HasOne("DB.EFModel.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("State");
+                });
+
             modelBuilder.Entity("DB.EFModel.Community", b =>
                 {
+                    b.HasOne("DB.EFModel.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
+
                     b.HasOne("DB.EFModel.CommunityType", "CommunityType")
                         .WithMany()
                         .HasForeignKey("CommunityTypeId")
@@ -1092,6 +1369,8 @@ namespace DB.Migrations
                     b.HasOne("DB.EFModel.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId");
+
+                    b.Navigation("City");
 
                     b.Navigation("CommunityType");
 
@@ -1125,22 +1404,46 @@ namespace DB.Migrations
                     b.Navigation("Resident");
                 });
 
+            modelBuilder.Entity("DB.EFModel.ComplaintPhotos", b =>
+                {
+                    b.HasOne("DB.EFModel.ComplaintDetail", null)
+                        .WithMany("ComplaintPhotos")
+                        .HasForeignKey("ComplaintDetailId");
+                });
+
             modelBuilder.Entity("DB.EFModel.ContentManagement", b =>
                 {
                     b.HasOne("DB.EFModel.Community", "Community")
                         .WithMany()
-                        .HasForeignKey("CommunityId");
+                        .HasForeignKey("CommunityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Community");
                 });
 
             modelBuilder.Entity("DB.EFModel.ContentPicture", b =>
                 {
-                    b.HasOne("DB.EFModel.ContentManagement", "ContentManagement")
-                        .WithMany()
-                        .HasForeignKey("ContentManagementId");
+                    b.HasOne("DB.EFModel.ContentManagement", null)
+                        .WithMany("ContentPictures")
+                        .HasForeignKey("ContentManagementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.Navigation("ContentManagement");
+            modelBuilder.Entity("DB.EFModel.EventDetails", b =>
+                {
+                    b.HasOne("DB.EFModel.Community", "Community")
+                        .WithMany()
+                        .HasForeignKey("CommunityId");
+
+                    b.HasOne("DB.EFModel.Resident", "Resident")
+                        .WithMany()
+                        .HasForeignKey("ResidentId");
+
+                    b.Navigation("Community");
+
+                    b.Navigation("Resident");
                 });
 
             modelBuilder.Entity("DB.EFModel.Facility", b =>
@@ -1153,7 +1456,9 @@ namespace DB.Migrations
 
                     b.HasOne("DB.EFModel.FacilityType", "FacilityType")
                         .WithMany()
-                        .HasForeignKey("FacilityTypeId");
+                        .HasForeignKey("FacilityTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Community");
 
@@ -1162,13 +1467,11 @@ namespace DB.Migrations
 
             modelBuilder.Entity("DB.EFModel.FacilityPhoto", b =>
                 {
-                    b.HasOne("DB.EFModel.Facility", "Facility")
-                        .WithMany()
+                    b.HasOne("DB.EFModel.Facility", null)
+                        .WithMany("FacilityPhotos")
                         .HasForeignKey("FacilityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Facility");
                 });
 
             modelBuilder.Entity("DB.EFModel.Menu", b =>
@@ -1180,8 +1483,25 @@ namespace DB.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("DB.EFModel.Notifications", b =>
+                {
+                    b.HasOne("DB.EFModel.Resident", "Resident")
+                        .WithMany()
+                        .HasForeignKey("ResidentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resident");
+                });
+
             modelBuilder.Entity("DB.EFModel.ResidencePaymentDetails", b =>
                 {
+                    b.HasOne("DB.EFModel.PaymentStatus", "PaymentStatus")
+                        .WithMany()
+                        .HasForeignKey("PaymentStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DB.EFModel.PaymentType", "PaymentType")
                         .WithMany()
                         .HasForeignKey("PaymentTypeId")
@@ -1189,10 +1509,12 @@ namespace DB.Migrations
                         .IsRequired();
 
                     b.HasOne("DB.EFModel.Resident", "resident")
-                        .WithMany()
+                        .WithMany("ResidencePaymentDetails")
                         .HasForeignKey("ResidentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("PaymentStatus");
 
                     b.Navigation("PaymentType");
 
@@ -1207,9 +1529,15 @@ namespace DB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DB.EFModel.Roles", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId");
+
                     b.HasOne("DB.EFModel.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId");
+
+                    b.Navigation("Role");
 
                     b.Navigation("State");
                 });
@@ -1222,7 +1550,13 @@ namespace DB.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DB.EFModel.Resident", "Resident")
+                        .WithMany()
+                        .HasForeignKey("ResidentId");
+
                     b.Navigation("Community");
+
+                    b.Navigation("Resident");
                 });
 
             modelBuilder.Entity("DB.EFModel.RoleMenuPermission", b =>
@@ -1242,9 +1576,15 @@ namespace DB.Migrations
 
             modelBuilder.Entity("DB.EFModel.Users", b =>
                 {
+                    b.HasOne("DB.EFModel.Community", "Community")
+                        .WithMany()
+                        .HasForeignKey("CommunityId");
+
                     b.HasOne("DB.EFModel.Roles", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId");
+
+                    b.Navigation("Community");
 
                     b.Navigation("Role");
                 });
@@ -1297,8 +1637,25 @@ namespace DB.Migrations
                     b.Navigation("VisitorParkingCharges");
                 });
 
+            modelBuilder.Entity("DB.EFModel.ComplaintDetail", b =>
+                {
+                    b.Navigation("ComplaintPhotos");
+                });
+
+            modelBuilder.Entity("DB.EFModel.ContentManagement", b =>
+                {
+                    b.Navigation("ContentPictures");
+                });
+
+            modelBuilder.Entity("DB.EFModel.Facility", b =>
+                {
+                    b.Navigation("FacilityPhotos");
+                });
+
             modelBuilder.Entity("DB.EFModel.Resident", b =>
                 {
+                    b.Navigation("ResidencePaymentDetails");
+
                     b.Navigation("VehicleDetails");
                 });
 

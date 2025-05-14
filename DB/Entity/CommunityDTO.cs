@@ -12,6 +12,7 @@ namespace DB.Entity
         public int Id { get; set; }  // Primary Key
         public int? StateId { get; set; }  // Primary Key
         public string? CommunityId { get; set; }
+        public int CityId { get; set; }
         public string? CommunityName { get; set; }
         public string? CityName { get; set; }
         public string? Address { get; set; }
@@ -26,6 +27,8 @@ namespace DB.Entity
         public int CommunityTypeId { get; set; }
         public List<VisitorParkingCharge>? VisitorParkingCharges { get; set; }
         public State? State { get; set; }
+        public CommunityType? CommunityType { get; set; }
+        public City? City { get; set; }
         public IEnumerable<CommunityDTO>? CommunityResult { get; set; }
     }
 

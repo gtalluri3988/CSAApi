@@ -18,6 +18,8 @@ namespace DB.Profiles
 
             CreateMap<CommunityDTO, Community>()
                 .ForMember(dest => dest.State, opt => opt.Ignore());
+            CreateMap<CommunityDTO, Community>()
+               .ForMember(dest => dest.CommunityType, opt => opt.Ignore());
             CreateMap<Community, CommunityDTO>();
             CreateMap<CommunityDTO, Community>();
         }

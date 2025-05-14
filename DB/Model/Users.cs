@@ -15,6 +15,7 @@ namespace DB.EFModel
         public string? LastName { get; set; }
         public string? Status { get; set; }
         public Nullable<int> RoleId { get; set; }
+        public Nullable<int> CommunityId { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
         public string? UserName { get; set; }
         public string? PicturePath { get; set; }
@@ -22,7 +23,8 @@ namespace DB.EFModel
         public Nullable<int> BadLoginAttempt { get; set; }
 
         public Roles? Role { get; set; }
-        
+        public Community? Community { get; set; }
+
 
 
     }

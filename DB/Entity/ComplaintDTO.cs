@@ -17,10 +17,12 @@ namespace DB.Entity
         public string? SecurityRemarks { get; set; }
         public int ComplaintStatusId { get; set; }
         public int ComplaintTypeId { get; set; }
+        public int ResidentId { get; set; }
         public ComplaintStatus? ComplaintStatus { get; set; }
         public ComplaintType? ComplaintType { get; set; }
 
-        public Resident? Resident { get; set; }
+        public ResidentDTO? Resident { get; set; }
+        public List<ComplaintPhotos>? ComplaintPhotos { get; set; }
 
     }
 }

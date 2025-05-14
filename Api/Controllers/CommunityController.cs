@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 using BusinessLogic.Services;
 using DB.Entity;
-
 namespace Api.Controllers
 {
     [Authorize]
@@ -19,87 +18,80 @@ namespace Api.Controllers
         {
             public List<CommunityDTO> CommunityResult {get; set;}
         }
-
-
         private readonly ICurrentUserService _currentUserService;
         public readonly ICommunityService _communityService;
-
         public CommunityController(
             ICurrentUserService currentUserService,
             ICommunityService communityService ,IUserService userService,
-            ILogger<ResidentController> logger)
+            ILogger<AuthorizedCSABaseAPIController> logger)
             : base(userService, logger)
         {
-           
             _currentUserService = currentUserService;
             _communityService= communityService;
         }
-
-       
         [HttpGet]
         public async Task<IActionResult> GetCommunityTypes()
         {
-            var Community = await _communityService.GetCommunityTypeList();
-            return Ok(Community);
+            return Ok(await _communityService.GetCommunityTypeList());
         }
-
         [HttpPost]
         public async Task<IActionResult> SaveCommunity([FromBody] CommunityObject community)
         {
-            var Community = await _communityService.GetCommunityTypeList();
-            return Ok(Community);
+            return Ok(await _communityService.GetCommunityTypeList());
         }
-
         [HttpGet]
         public async Task<IActionResult> GetAllCommunities()
         {
-            var Community = await _communityService.GetAllCommunitiesAsync();
-            return Ok(new CommunityDTO { CommunityResult = Community });
+            return Ok(new CommunityDTO { CommunityResult = await _communityService.GetAllCommunitiesAsync() });
         }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCommunityById(int id)
         {
             var Community = await _communityService.GetCommunityByIdAsync(id);
-            if (Community == null)
-                return NotFound();
+            //if (Community == null)
+            //    return NotFound();
             return Ok(Community);
         }
-
         [HttpPost]
         public async Task<IActionResult> CreateCommunity(CommunityDTO dto)
         {
-            Random random = new Random();
-            int randomNumber = random.Next(1000, 9999); // Generates a number between 1000 and 9999
-            dto.CommunityId  = randomNumber.ToString();
+            dto.CommunityId = await _communityService.GetNextNumberAsync();
             var createdCommunity = await _communityService.CreateCommunityAsync(dto);
             return CreatedAtAction(nameof(GetCommunityById), new { id = createdCommunity.Id }, createdCommunity);
         }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCommunity(int id, CommunityDTO dto)
+        [HttpPost("{id}")]
+        public async Task<IActionResult> UpdateCommunity(int id, [FromBody] CommunityDTO dto)
         {
             await _communityService.UpdateCommunityAsync(id, dto);
-            return NoContent();
+            return Ok(true);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCommunity(int id)
         {
-            await _communityService.DeleteCommunityAsync(id);
-            return NoContent();
+            try
+            {
+                await _communityService.DeleteCommunityAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpGet]
         public async Task<IActionResult> GetAllCommunitiesWithStates()
         {
-            var Community = await _communityService.GetAllCommunitiesWithStatesAsync();
-            return Ok(new CommunityDTO { CommunityResult = Community });
+            return Ok(new CommunityDTO { CommunityResult = await _communityService.GetAllCommunitiesWithStatesAsync() });
         }
         [HttpGet]
         public async Task<IActionResult> GetAllCommunitiesWithResidentCount()
         {
-            var CommunityResidentCount = await _communityService.GetCommunitiesWithResidentCountAsync();
-            return Ok(CommunityResidentCount);
+            return Ok(await _communityService.GetCommunitiesWithResidentCountAsync());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetCityByStateId(int stateId)
+        {
+            return Ok(await _communityService.GetCityByStateAsync(stateId));
+        }
     }
 }

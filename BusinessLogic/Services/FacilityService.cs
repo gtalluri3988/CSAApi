@@ -23,7 +23,10 @@ namespace BusinessLogic.Services
         {
             return await _facilityRepository.GetAllFacilitiesAsync();
         }
-
+        public async Task<IEnumerable<FacilityDTO>> SearchFacilityAsync(int communityId,int facilityId)
+        {
+            return await _facilityRepository.SearchFacilitiesAsync(communityId, facilityId);
+        }
         public async Task<FacilityDTO> GetFacilityByIdAsync(int id)
         {
             return await _facilityRepository.GetAllFacilityByIdAsync(id);

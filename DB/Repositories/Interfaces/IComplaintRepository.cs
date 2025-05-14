@@ -15,5 +15,8 @@ namespace DB.Repositories.Interfaces
         Task UpdateAsync(int id, ComplaintDTO dto);
         Task DeleteAsync(int id);
         Task<IEnumerable<ComplaintDTO>> GetAllComplaintsAsync();
+        Task<ComplaintDTO> GetComplaintByComplaintIdAsync(int complaintId);
+        Task UpdateComplaintAsync(int complaintId, ComplaintDTO complaint);
+        Task<ComplaintDTO> CreateComplaintAsync(ComplaintDTO dto);
     }
 }

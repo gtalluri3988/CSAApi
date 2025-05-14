@@ -2,6 +2,7 @@
 using DB.EFModel;
 using DB.Entity;
 using DB.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace DB.Repositories
 {
     public class RolePermissionRepository : RepositoryBase<RoleMenuPermission, RoleMenuPermissionDTO>, IRolePermissionRepository
     {
-        public RolePermissionRepository(CSADbContext context, IMapper mapper) : base(context, mapper) { }
+        public RolePermissionRepository(CSADbContext context, IMapper mapper,IHttpContextAccessor httpContextAccessor) : base(context, mapper, httpContextAccessor) { }
 
         public async Task UpdateRolePermissionAsync(int PermissionId, RoleMenuPermissionDTO rolePermission)
         {
@@ -67,6 +68,35 @@ namespace DB.Repositories
             _context.Add(entity);
             await _context.SaveChangesAsync();
             return _mapper.Map<RoleMenuPermissionDTO>(rolePermission);
+        }
+
+        public async Task<IEnumerable<MenuResponseDto>> GetRolesMenu(int roleId)
+        {
+            var menusWithSubmenus = await _context.Menu.Where(x=>x.ParentId=="0")
+                                  .GroupJoin(_context.RoleMenuPermission.Where(mr => mr.RoleId == roleId),
+                                   menu => menu.Id,
+                                   menuRole => menuRole.MenuId,
+                                   (menu, menuRoles) => new MenuResponseDto
+                                   {
+                                       MenuId = menu.Id,
+                                       MenuName = menu.Name,
+
+                                       Url = menu.Url,
+                                       Submenus = menuRoles
+                                        .Join(_context.Menu, // ✅ Join with SubMenu Table
+                                         roleMenu => roleMenu.SubMenuId,
+                                         submenu => submenu.Id,
+                                         (roleMenu, submenu) => new SubmenuDto
+                                         {
+                                             SubmenuId = submenu.Id,
+                                             SubmenuName = submenu.Name ?? "",
+                                             Url = _context.Menu.Where(x=>x.Id== submenu.Id).Select(x=>x.Url).FirstOrDefault()
+                                         })
+                                        .ToList()
+                                   })
+                                   .ToListAsync();
+            return menusWithSubmenus;
+
         }
     }
 }

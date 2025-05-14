@@ -9,10 +9,11 @@ namespace DB.EFModel
         public string? VehicleNo { get; set; }
         public DateTime? EntryTime { get; set; }
         public DateTime? ExitTime { get; set; }
-        public string? HouseNo { get; set; }
-        public int LevelNo { get; set; }
-        public string? BlockNo { get; set; }
-        public string? RoadNo { get; set; }
+
+        public DateTime? ValidFrom { get; set; }
+        public DateTime? ValidTo { get; set; }
+        public int? ResidentId { get; set; }  // Primary Key
+        public Resident? Resident { get; set; }
         public Boolean TemporaryAccess { get; set; }
         public int CommunityId { get; set; }
         public Community? Community { get; set; }

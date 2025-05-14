@@ -14,5 +14,6 @@ namespace BusinessLogic.Interfaces
         Task<FacilityDTO> CreateFacilityAsync(FacilityDTO dto);
         Task UpdateFacilityAsync(int id, FacilityDTO dto);
         Task DeleteFacilityAsync(int id);
+        Task<IEnumerable<FacilityDTO>> SearchFacilityAsync(int communityId, int facilityId);
     }
 }

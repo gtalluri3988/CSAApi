@@ -40,7 +40,12 @@ namespace BusinessLogic.Services
         {
             return await _roleMenuPermissionRepository.GetAllMenuPermissionListAsync();
         }
-        
+
+        public async Task<IEnumerable<MenuResponseDto>> GetAllMenusByRolesAsync(int roleId)
+        {
+            return await _roleMenuPermissionRepository.GetRolesMenu(roleId);
+        }
+
 
 
     }

@@ -31,9 +31,11 @@ public class AuthController : AuthorizedCSABaseAPIController
     [HttpPost()]
     public async  Task<ActionResult <CSAResponseModel<AuthenticationResponse>>>Authenticate([FromBody] AuthenticationModel model)
     {
+        try
+        {
             string clientIp = NetWorkUtils.GetClientIp(HttpContext);
-            var user = _userService.Authenticate(model.Username, model.Password, out AuthenticationError loginError);
-            if (user == null || !await _userService.CheckPassword(model.Password))
+            var user = _userService.Authenticate(model.Username, model.Password,model.RoleId, out AuthenticationError loginError);
+            if (user == null || !await _userService.CheckPassword(model.Password,model.RoleId))
             {
                 _logger.Log(LogLevel.Debug, "Login Failed");
                 _userService.LogAuthAttempt(model.Username, clientIp, loginError.Message, null, false);
@@ -44,11 +46,17 @@ public class AuthController : AuthorizedCSABaseAPIController
                 return BadRequest(new ErrorMessage { message = "Login failed" });
             }
 
-            string Role = _userService.RoleForUser(user.Id);
+            var Role = _userService.RoleForUser(user.Id);
             string tokenString = GenerateJwtToken(user, clientIp);
-            
+
             var authResponse = new AuthenticationResponse { Token = tokenString, RedirectTo = "/dashboard" };
             return new CSAResponseModel<AuthenticationResponse>(authResponse);
+        }
+        catch (Exception ex)
+        {
+
+            return BadRequest(ex.Message);
+        }
     }
 
     private string GenerateJwtToken(IUser user, string ip)
@@ -79,12 +87,48 @@ public class AuthController : AuthorizedCSABaseAPIController
         var claims = new List<Claim>()
         {
             new("userid",user.Id.ToString()),
+            new("roleid",user.Details.RoleId.ToString()),
             new(ClaimTypes.Name,user.Details.UserName),
+            new("CommunityId",user.Details.CommunityId.ToString()),
             new("FirstName",user.Details.FirstName),
             new("LastName",user.Details.LastName),
             new(ClaimTypes.Role,user.Role),
+           
         };
         return claims;
+    }
+
+
+    [AllowAnonymous]
+    [HttpPost()]
+    public async Task<ActionResult<CSAResponseModel<AuthenticationResponse>>> ResidentAuthenticate([FromBody] AuthenticationModel model)
+    {
+        try
+        {
+            string clientIp = NetWorkUtils.GetClientIp(HttpContext);
+            var user = _userService.Authenticate(model.Username, model.Password,model.RoleId, out AuthenticationError loginError);
+            if (user == null || !await _userService.CheckPassword(model.Password,model.RoleId))
+            {
+                _logger.Log(LogLevel.Debug, "Login Failed");
+                _userService.LogAuthAttempt(model.Username, clientIp, loginError.Message, null, false);
+                if (loginError.Reason == AuthenticationErrorReason.UserDeactivated)
+                {
+                    return Unauthorized(new ErrorMessage { message = "Login failed" });
+                }
+                return BadRequest(new ErrorMessage { message = "Login failed" });
+            }
+
+            var Role = _userService.RoleForUser(user.Id);
+            string tokenString = GenerateJwtToken(user, clientIp);
+
+            var authResponse = new AuthenticationResponse { Token = tokenString, RedirectTo = "/home" };
+            return new CSAResponseModel<AuthenticationResponse>(authResponse);
+        }
+        catch (Exception ex)
+        {
+
+            return BadRequest(ex.Message);
+        }
     }
 }
 

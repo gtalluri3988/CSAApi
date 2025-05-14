@@ -27,6 +27,8 @@ namespace DB.Entity
         public Nullable<System.DateTime> PasswordExpiryDate { get; set; }
         public Nullable<int> BadLoginAttempt { get; set; }
 
+        public int CommunityId { get; set; }
+
         public Roles? Roles { get; set; }
     }
 }
