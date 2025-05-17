@@ -12,7 +12,8 @@ public class VisitorProfile : Profile
 
         CreateMap<VisitorAccessDetailsDTO, VisitorAccessDetails>()
             .ForMember(dest => dest.VisitorAccessType, opt => opt.Ignore());
-
+        CreateMap<VisitorAccessDetailsDTO, VisitorAccessDetails>()
+                .ForMember(dest => dest.Community, opt => opt.Ignore());
 
         CreateMap<VisitorAccessDetails, VisitorAccessDetailsDTO>();
         CreateMap<VisitorAccessDetailsDTO, VisitorAccessDetails>();

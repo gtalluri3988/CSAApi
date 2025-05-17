@@ -65,7 +65,7 @@ namespace Api.Controllers
             await _communityService.UpdateCommunityAsync(id, dto);
             return Ok(true);
         }
-        [HttpDelete("{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> DeleteCommunity(int id)
         {
             try

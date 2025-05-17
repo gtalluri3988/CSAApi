@@ -14,7 +14,7 @@ namespace DB.Entity
         public string? HouseNo { get; set; }
         public string? Name { get; set; }
         public string? LotNo { get; set; }
-        public int Level { get; set; }
+        public string? Level { get; set; }
         public string? BlockNo { get; set; }
         public string? RoadNo { get; set; }
         public string? NRIC { get; set; }
@@ -28,6 +28,7 @@ namespace DB.Entity
         public int ParkingLotQty { get; set; }
         public int ParkingLotNos { get; set; }
         public int MaintenenceFeesCost { get; set; }
+        public string? maintainanceFee { get; set; }
         public string? ContactPerson1 { get; set; }
         public string? ContactPerson2 { get; set; }
         public List<VehicleDetails>? VehicleDetails { get; set; }

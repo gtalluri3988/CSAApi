@@ -1,7 +1,7 @@
 ﻿using BusinessLogic.Interfaces;
 using DB.Entity;
 using DB.Repositories.Interfaces;
-
+using Microsoft.AspNetCore.Http;
 
 namespace BusinessLogic.Services
 {
@@ -30,9 +30,9 @@ namespace BusinessLogic.Services
             return await _complaintRepository.CreateComplaintAsync(dto);
         }
 
-        public async Task UpdateComplaintAsync(int id, ComplaintDTO dto)
+        public async Task UpdateComplaintAsync(int id, ComplaintDTO dto, List<IFormFile> photos)
         {
-            await _complaintRepository.UpdateComplaintAsync(id, dto);
+            await _complaintRepository.UpdateComplaintAsync(id, dto, photos);
         }
 
         public async Task DeleteComplaintAsync(int id)

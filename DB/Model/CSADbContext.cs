@@ -13,12 +13,12 @@ namespace DB.EFModel
 {
     public class CSADbContext : DbContext
     {
-        //private readonly IHttpContextAccessor _httpContextAccessor;
-        public CSADbContext(DbContextOptions<CSADbContext> options)
-            //,IHttpContextAccessor httpContextAccessor)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public CSADbContext(DbContextOptions<CSADbContext> options
+            ,IHttpContextAccessor httpContextAccessor)
             : base(options)
         {
-           //_httpContextAccessor= httpContextAccessor;
+           _httpContextAccessor= httpContextAccessor;
         }
         
         public DbSet<Users> Users { get; set; }
@@ -63,13 +63,15 @@ namespace DB.EFModel
 
         public DbSet<Notifications> Notifications { get; set; }
 
+        public DbSet<ResidentUploadHistory> ResidentUploadHistory { get; set; }
+
         //  public DbSet<CommunityVisitorCharges> CommunityVisitorCharges { get; set; }
 
 
-        //public string GetCurrentUserId()
-        //{
-        //    return _httpContextAccessor.HttpContext?.User?.FindFirst("userid")?.Value ?? "Unknown";
-        //}
+        public string GetCurrentUserId()
+        {
+            return _httpContextAccessor.HttpContext?.User?.FindFirst("userid")?.Value ?? "Unknown";
+        }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -82,12 +84,12 @@ namespace DB.EFModel
                 if (entry.State == EntityState.Added)
                 {
                     entry.Entity.CreatedDate = DateTime.UtcNow;
-                    entry.Entity.CreatedBy = "";// GetCurrentUserId(); // Replace with actual user
+                    entry.Entity.CreatedBy =  GetCurrentUserId(); // Replace with actual user
                 }
                 else if (entry.State == EntityState.Modified)
                 {
                     entry.Entity.UpdatedDate = DateTime.UtcNow;
-                    entry.Entity.UpdatedBy = "";// GetCurrentUserId(); // Replace with actual user
+                    entry.Entity.UpdatedBy = GetCurrentUserId(); // Replace with actual user
                 }
             }
 

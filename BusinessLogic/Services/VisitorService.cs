@@ -24,6 +24,11 @@ namespace BusinessLogic.Services
             return await _visitorRepository.GetAllVisitorsAsync();
         }
 
+        public async Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsByCommunityAsync(int communityId)
+        {
+            return await _visitorRepository.GetAllVisitorsByCommunityAsync(communityId);
+        }
+
         public async Task<VisitorAccessDetailsDTO> GetVisitorsByIdAsync(int id)
         {
             return await _visitorRepository.GetByIdAsync(id);

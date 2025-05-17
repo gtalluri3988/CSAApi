@@ -60,6 +60,8 @@ builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IResidentAccessHistoryService, ResidentAccessHistoryService>();
+builder.Services.AddScoped<IResidentUploadHistoryService, ResidentUploadHistoryService>();
+
 
 //builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddControllers();

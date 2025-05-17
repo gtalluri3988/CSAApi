@@ -10,6 +10,7 @@ namespace BusinessLogic.Interfaces
     public interface IVisitorService
     {
         Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsAsync();
+        Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsByCommunityAsync(int communityId);
         Task<VisitorAccessDetailsDTO> GetVisitorsByIdAsync(int id);
         Task<VisitorAccessDetailsDTO> CreateVisitorAsync(VisitorAccessDetailsDTO dto);
         Task UpdateVisitorAsync(int id, VisitorAccessDetailsDTO dto);

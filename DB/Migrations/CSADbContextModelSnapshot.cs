@@ -854,8 +854,8 @@ namespace DB.Migrations
                     b.Property<string>("HouseNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Level")
-                        .HasColumnType("int");
+                    b.Property<string>("Level")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LotNo")
                         .HasColumnType("nvarchar(max)");
@@ -958,6 +958,43 @@ namespace DB.Migrations
                     b.HasIndex("ResidentId");
 
                     b.ToTable("ResidentAccessHistory");
+                });
+
+            modelBuilder.Entity("DB.EFModel.ResidentUploadHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Attachment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UploadDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UploadedBy")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ResidentUploadHistory");
                 });
 
             modelBuilder.Entity("DB.EFModel.RoleMenuPermission", b =>
@@ -1207,6 +1244,9 @@ namespace DB.Migrations
                     b.Property<string>("BlockNo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CommunityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ContactPerson1")
                         .HasColumnType("nvarchar(max)");
 
@@ -1228,8 +1268,8 @@ namespace DB.Migrations
                     b.Property<string>("HouseNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LevelNo")
-                        .HasColumnType("int");
+                    b.Property<string>("LevelNo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoadNo")
                         .HasColumnType("nvarchar(max)");
@@ -1256,6 +1296,8 @@ namespace DB.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommunityId");
 
                     b.HasIndex("VisitorAccessTypeId");
 
@@ -1577,7 +1619,7 @@ namespace DB.Migrations
             modelBuilder.Entity("DB.EFModel.Users", b =>
                 {
                     b.HasOne("DB.EFModel.Community", "Community")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("CommunityId");
 
                     b.HasOne("DB.EFModel.Roles", "Role")
@@ -1608,9 +1650,15 @@ namespace DB.Migrations
 
             modelBuilder.Entity("DB.EFModel.VisitorAccessDetails", b =>
                 {
+                    b.HasOne("DB.EFModel.Community", "Community")
+                        .WithMany()
+                        .HasForeignKey("CommunityId");
+
                     b.HasOne("DB.EFModel.VisitorAccessType", "VisitorAccessType")
                         .WithMany()
                         .HasForeignKey("VisitorAccessTypeId");
+
+                    b.Navigation("Community");
 
                     b.Navigation("VisitorAccessType");
                 });
@@ -1633,6 +1681,8 @@ namespace DB.Migrations
             modelBuilder.Entity("DB.EFModel.Community", b =>
                 {
                     b.Navigation("Residents");
+
+                    b.Navigation("Users");
 
                     b.Navigation("VisitorParkingCharges");
                 });

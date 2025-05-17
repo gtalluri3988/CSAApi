@@ -49,22 +49,68 @@ namespace DB.Repositories
             return residentDtos;
         }
 
+        public async Task<IEnumerable<ResidentDTO>> SearchResidentsByCommunityIdAsync(ResidentDTO searchModel)
+    
+        {
+            var currentMonth = DateTime.UtcNow.Month;
+            var currentYear = DateTime.UtcNow.Year;
+
+            // Start with base query
+            var query = _context.Resident
+                .Include(r => r.State)
+                .Include(r => r.ResidencePaymentDetails)
+                    .ThenInclude(p => p.PaymentStatus)
+                .Where(r => r.CommunityId == searchModel.CommunityId);
+
+            // Apply filters only if values are provided
+            if (!string.IsNullOrWhiteSpace(searchModel.RoadNo))
+                query = query.Where(r => r.RoadNo == searchModel.RoadNo);
+
+            if (!string.IsNullOrWhiteSpace(searchModel.BlockNo))
+                query = query.Where(r => r.BlockNo == searchModel.BlockNo);
+
+            if (!string.IsNullOrWhiteSpace(searchModel.HouseNo))
+                query = query.Where(r => r.HouseNo == searchModel.HouseNo);
+            
+               
+            if (!string.IsNullOrWhiteSpace(searchModel.Level))
+                query = query.Where(r => r.Level == searchModel.Level);
+
+            var residents = await query.ToListAsync();
+
+            var residentDtos = _mapper.Map<List<ResidentDTO>>(residents);
+
+            foreach (var dto in residentDtos)
+            {
+                var entity = residents.First(r => r.Id == dto.Id);
+                var payment = entity.ResidencePaymentDetails?
+                    .FirstOrDefault(p =>
+                        p.PaymentDate.HasValue &&
+                        p.PaymentDate.Value.Month == currentMonth &&
+                        p.PaymentDate.Value.Year == currentYear);
+
+                dto.PaymentStatus = payment?.PaymentStatus?.Name ?? "Awaiting Payment";
+            }
+            if (!string.IsNullOrWhiteSpace(searchModel.maintainanceFee))
+                residentDtos = residentDtos.Where(x => x.PaymentStatus == searchModel.maintainanceFee).ToList();
+
+                return residentDtos;
+        }
+
         public async Task<ResidentDTO> SaveResidentAsync(ResidentDTO resident)
         {
             var entity = _mapper.Map<EFModel.Resident>(resident);
-            try
-            {
+                var residentCheck=_context.Resident.Where(x=>x.RoadNo==resident.RoadNo && x.BlockNo==resident.BlockNo 
+                && x.Level == resident.Level && x.HouseNo == resident.HouseNo && x.CommunityId==resident.CommunityId).FirstOrDefault();
+                if (residentCheck != null)
+                {
+                    throw new Exception("Already another resident alloted for this unit");
+                }
                 entity.RoleId = 5;
                 _context.Resident.Add(entity);
                 await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-
-            }
             return await GetByIdAsync(entity.Id);
         }
-
         public async Task<List<ResidentDTO>> GetResidentsDropdownsAsync(int communityId,string Type)
         {
             try
@@ -156,7 +202,7 @@ namespace DB.Repositories
             return _mapper.Map<ResidentDTO>(residents);
         }
 
-        public async Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, int level, string houseNo)
+        public async Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, string level, string houseNo)
         {
             var residents = await _context.Resident.Where(x => x.RoadNo == roadNo && x.BlockNo == blockNo && x.Level==level && x.HouseNo==houseNo).FirstOrDefaultAsync();
 

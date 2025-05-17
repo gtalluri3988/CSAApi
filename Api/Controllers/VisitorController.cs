@@ -21,8 +21,31 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllVisitors()
         {
-            return Ok(await _visitorService.GetAllVisitorsAsync());
+            try
+            {
+                
+                return Ok(await _visitorService.GetAllVisitorsAsync());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllVisitorsByCommunityId(int communityId)
+        {
+            try
+            {
+
+                return Ok(await _visitorService.GetAllVisitorsByCommunityAsync(communityId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVisitorById(int id)
@@ -36,8 +59,15 @@ namespace Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVisitor(VisitorAccessDetailsDTO dto)
         {
-            var createdVisitor = await _visitorService.CreateVisitorAsync(dto);
-            return CreatedAtAction(nameof(GetVisitorById), new { id = createdVisitor.Id }, createdVisitor);
+            try
+            {
+                var createdVisitor = await _visitorService.CreateVisitorAsync(dto);
+                return CreatedAtAction(nameof(GetVisitorById), new { id = createdVisitor.Id }, createdVisitor);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]

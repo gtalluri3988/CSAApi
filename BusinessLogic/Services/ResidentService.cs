@@ -49,9 +49,13 @@ namespace BusinessLogic.Services
             return await _residentRepository.GetResidentsDropdownsAsync(communityId,Type);
         }
 
-        public async Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, int level, string houseNo)
+        public async Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, string level, string houseNo)
         {
             return await _residentRepository.GetResidentsNameandContactByAddresses(roadNo, blockNo, level, houseNo);
+        }
+        public async Task<IEnumerable<ResidentDTO>> SearchResidentsByCommunityIdAsync(ResidentDTO search)
+        {
+            return await _residentRepository.SearchResidentsByCommunityIdAsync(search);
         }
 
     }

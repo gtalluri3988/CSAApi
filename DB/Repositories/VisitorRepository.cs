@@ -15,7 +15,13 @@ namespace DB.Repositories
 
         public async Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsAsync()
         {
-            var Visitors = await _context.VisitorAccessDetails.Include(c => c.VisitorAccessType).OrderByDescending(x=>x.Id).ToListAsync();
+            var Visitors = await _context.VisitorAccessDetails.Include(c => c.VisitorAccessType).Include(x=>x.Community).OrderByDescending(x=>x.Id).ToListAsync();
+            return _mapper.Map<IEnumerable<VisitorAccessDetailsDTO>>(Visitors);
+        }
+
+        public async Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsByCommunityAsync(int communityId)
+        {
+            var Visitors = await _context.VisitorAccessDetails.Where(x=>x.CommunityId== communityId).Include(c => c.VisitorAccessType).Include(x => x.Community).OrderByDescending(x => x.Id).ToListAsync();
             return _mapper.Map<IEnumerable<VisitorAccessDetailsDTO>>(Visitors);
         }
 

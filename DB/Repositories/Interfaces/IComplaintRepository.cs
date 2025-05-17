@@ -1,4 +1,5 @@
 ﻿using DB.Entity;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace DB.Repositories.Interfaces
         Task DeleteAsync(int id);
         Task<IEnumerable<ComplaintDTO>> GetAllComplaintsAsync();
         Task<ComplaintDTO> GetComplaintByComplaintIdAsync(int complaintId);
-        Task UpdateComplaintAsync(int complaintId, ComplaintDTO complaint);
+        Task UpdateComplaintAsync(int complaintId, ComplaintDTO complaint, List<IFormFile> photos);
         Task<ComplaintDTO> CreateComplaintAsync(ComplaintDTO dto);
     }
 }

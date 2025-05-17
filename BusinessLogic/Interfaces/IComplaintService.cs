@@ -1,4 +1,5 @@
 ﻿using DB.Entity;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BusinessLogic.Interfaces
         Task<IEnumerable<ComplaintDTO>> GetAllComplaintAsync();
         Task<ComplaintDTO> GetComplaintByIdAsync(int id);
         Task<ComplaintDTO> CreateComplaintAsync(ComplaintDTO dto);
-        Task UpdateComplaintAsync(int id, ComplaintDTO dto);
+        Task UpdateComplaintAsync(int id, ComplaintDTO dto, List<IFormFile> photos);
         Task DeleteComplaintAsync(int id);
     }
 }

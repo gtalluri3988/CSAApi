@@ -24,6 +24,7 @@ namespace DB.Repositories.Interfaces
         Task<ResidentDTO> GetResidentsByNRICAsync(string nric, int communityId);
         ResidentDTO GetResidentsByEmailPasswordAsync(string Email, string Password);
         Task<List<ResidentDTO>> GetResidentsDropdownsAsync(int communityId, string Type);
-        Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, int level, string houseNo);
+        Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, string level, string houseNo);
+        Task<IEnumerable<ResidentDTO>> SearchResidentsByCommunityIdAsync(ResidentDTO searchModel);
     }
 }

@@ -20,18 +20,27 @@ namespace DB.Repositories
 
         public async Task<IEnumerable<ComplaintDTO>> GetAllComplaintsAsync()
         {
-            var Visitors = await _context.ComplaintDetail.Include(c => c.ComplaintStatus)
-                .Include(c => c.ComplaintType).Include(c=>c.Resident).ToListAsync();
-            return _mapper.Map<IEnumerable<ComplaintDTO>>(Visitors);
+                var complaints = await _context.ComplaintDetail.Include(c => c.ComplaintStatus)
+                    .Include(c => c.ComplaintType).Include(x=>x.Resident).ToListAsync();
+                var complaintsDtos = _mapper.Map<List<ComplaintDTO>>(complaints);
+                // Attach PaymentStatus manually
+                foreach (var dto in complaintsDtos)
+                {
+                    if (dto.Resident != null)
+                    {
+                        var CommunityName = _context.Community.Where(x => x.Id == dto.Resident.CommunityId).FirstOrDefault();
+                        dto.CommunityName = CommunityName?.CommunityName;
+                    }
+                }
+                return _mapper.Map<IEnumerable<ComplaintDTO>>(complaintsDtos);
         }
-
         public async Task<ComplaintDTO> GetComplaintByComplaintIdAsync(int complaintId)
         {
             var Complaint = await _context.ComplaintDetail.Include(c => c.Resident).FirstOrDefaultAsync();
             return _mapper.Map<ComplaintDTO>(Complaint);
         }
 
-        public async Task UpdateComplaintAsync(int complaintId, ComplaintDTO complaint)
+        public async Task UpdateComplaintAsync(int complaintId, ComplaintDTO complaint, List<IFormFile> photos)
         {
             var entity = await _context.ComplaintDetail
                                // If related data needs updating
@@ -68,6 +77,33 @@ namespace DB.Repositories
                         photo.Preview = "";
                         entity.ComplaintPhotos.Add(photo);
 
+                    }
+                }
+                foreach (var file in photos)
+                {
+                    if (file.Length > 0)
+                    {
+                        using var memoryStream = new MemoryStream();
+                        await file.CopyToAsync(memoryStream);
+                        var fileBytes = memoryStream.ToArray();
+                        string base64String = Convert.ToBase64String(fileBytes);
+                        ComplaintPhotos photo = new ComplaintPhotos();
+                        var imageBytes = Convert.FromBase64String(base64String);
+                        var fileName = $"{Guid.NewGuid()}.png";
+                        string drivePath = @"C:\Uploads\";
+                        // Ensure the directory exists
+                        if (!Directory.Exists(drivePath))
+                        {
+                            Directory.CreateDirectory(drivePath);
+                        }
+                        var filePath = Path.Combine(drivePath, fileName);
+                        System.IO.File.WriteAllBytes(filePath, imageBytes);
+                        var fileUrl = $"/uploads/{fileName}";
+                        photo.ImageGuid = fileName;
+                        photo.ComplaintDetailId = entity.Id;
+                        photo.Name = "";
+                        photo.Preview = "";
+                        entity.ComplaintPhotos.Add(photo);
                     }
                 }
             }

@@ -30,7 +30,15 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllComplaints()
         {
-            return Ok(await _complaintService.GetAllComplaintAsync());
+            try
+            {
+                return Ok(await _complaintService.GetAllComplaintAsync());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
@@ -43,16 +51,17 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateComplaint(ComplaintDTO dto)
+        public async Task<IActionResult> CreateComplaint([FromForm]  ComplaintDTO dto)
         {
             var createdComplaint = await _complaintService.CreateComplaintAsync(dto);
             return CreatedAtAction(nameof(GetComplaintById), new { id = createdComplaint.Id }, createdComplaint);
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateComplaint(int id, ComplaintDTO dto)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UpdateComplaint(int id, [FromForm] ComplaintDTO dto, [FromForm] List<IFormFile> photos)
         {
-            await _complaintService.UpdateComplaintAsync(id, dto);
+            await _complaintService.UpdateComplaintAsync(id, dto, photos);
             return NoContent();
         }
 

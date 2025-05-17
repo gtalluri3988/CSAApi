@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 using BusinessLogic.Services;
 using DB.Entity;
+using BusinessLogic.Models.Users;
 
 namespace Api.Controllers
 {
@@ -33,8 +34,14 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllResidentsByCommunity(int communityId)
         {
-            
-            return Ok(await _residentService.GetAllResidentsByCommunityAsync(communityId));
+            try
+            {
+                return Ok(await _residentService.GetAllResidentsByCommunityAsync(communityId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpGet]
         public async Task<IActionResult> GetResidentsByResidentId(int residentId)
@@ -46,9 +53,15 @@ namespace Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateResident(ResidentDTO residentModel)
         {
-            Random random = new Random();           
-            var createdResident = await _residentService.CreateResidentAsync(residentModel);
-            return CreatedAtAction(nameof(GetResidentsByResidentId), new { id = createdResident.Id }, createdResident);
+            try
+            {
+                Random random = new Random();
+                var createdResident = await _residentService.CreateResidentAsync(residentModel);
+                return CreatedAtAction(nameof(GetResidentsByResidentId), new { id = createdResident.Id }, createdResident);
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost]
         public async Task<IActionResult> UpdateResident(int id, ResidentDTO dto)
@@ -73,9 +86,16 @@ namespace Api.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, int level, string houseNo)
+        public async Task<IActionResult> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, string level, string houseNo)
         {
             return Ok(await _residentService.GetResidentsNameandContactByAddresses(roadNo, blockNo, level, houseNo));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetAllResidentsBysearchParams(ResidentDTO Params)
+        {
+
+            return Ok(await _residentService.SearchResidentsByCommunityIdAsync(Params));
         }
     }
 }

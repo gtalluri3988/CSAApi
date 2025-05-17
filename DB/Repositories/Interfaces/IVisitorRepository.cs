@@ -16,5 +16,6 @@ namespace DB.Repositories.Interfaces
         Task UpdateAsync(int id, VisitorAccessDetailsDTO dto);
         Task DeleteAsync(int id);
         Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsAsync();
+        Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsByCommunityAsync(int communityId);
     }
 }

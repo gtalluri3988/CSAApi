@@ -31,6 +31,7 @@ namespace DB
             services.AddAutoMapper(typeof(PaymentProfile));
             services.AddAutoMapper(typeof(EventProfile));
             services.AddAutoMapper(typeof(ResidentAccessHistoryProfile));
+            services.AddAutoMapper(typeof(ResidentUploadHistoryProfile));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICommunityRepository, CommunityRepository>();
             services.AddScoped<IDropdownRepository, DropdownRepository>();
@@ -48,6 +49,7 @@ namespace DB
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<INotificationRepository, NotificationRepository>();
             services.AddScoped<IResidentAccessHistoryRepository, ResidentAccessHistoryRepository>();
+            services.AddScoped<IResidentUploadHistoryRepository, ResidentUploadHistoryRepository>();
             return services;
         }
     }

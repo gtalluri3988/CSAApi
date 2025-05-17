@@ -1,4 +1,5 @@
 ﻿using DB.EFModel;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,11 @@ namespace DB.Entity
         public string? Description { get; set; }
         public DateTime? ComplaintDate { get; set; }
         public string? SecurityRemarks { get; set; }
+        public string? CommunityName { get; set; }
         public int ComplaintStatusId { get; set; }
         public int ComplaintTypeId { get; set; }
         public int ResidentId { get; set; }
+        public IFormFileCollection? Photos { get; set; }
         public ComplaintStatus? ComplaintStatus { get; set; }
         public ComplaintType? ComplaintType { get; set; }
 

@@ -10,7 +10,8 @@ namespace DB.EFModel
         public string? HouseNo { get; set; }
         public string? Name { get; set; }
         public string? LotNo { get; set; }
-        public int Level { get; set; }
+       
+        public string? Level { get; set; }
         public int? RoleId { get; set; }
         public string? BlockNo { get; set; }
         public string? RoadNo { get; set; }
