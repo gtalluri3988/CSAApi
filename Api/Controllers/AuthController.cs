@@ -81,6 +81,7 @@ public class AuthController : AuthorizedCSABaseAPIController
         return tokenString;
     }
 
+
     private List<Claim> CreateClaims(string ip, IUser user)
     {
         if (user.Details == null)
