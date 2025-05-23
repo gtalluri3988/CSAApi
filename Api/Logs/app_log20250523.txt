@@ -1187,3 +1187,17 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
 2025-05-23 21:07:35.136 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
 2025-05-23 21:07:36.003 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
 2025-05-23 21:07:36.239 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 404 0 - 241.1754ms
+2025-05-23 21:12:24.441 +05:30 [INF] Now listening on: https://localhost:7225
+2025-05-23 21:12:24.467 +05:30 [INF] Now listening on: http://localhost:5130
+2025-05-23 21:12:24.470 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-23 21:12:24.471 +05:30 [INF] Hosting environment: Development
+2025-05-23 21:12:24.472 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-05-23 21:12:24.885 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-05-23 21:12:25.090 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 404 0 - 211.2017ms
+2025-05-23 21:12:47.105 +05:30 [INF] Now listening on: https://localhost:7225
+2025-05-23 21:12:47.154 +05:30 [INF] Now listening on: http://localhost:5130
+2025-05-23 21:12:47.158 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-23 21:12:47.160 +05:30 [INF] Hosting environment: Development
+2025-05-23 21:12:47.162 +05:30 [INF] Content root path: C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api
+2025-05-23 21:12:47.844 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7225/swagger/index.html - -
+2025-05-23 21:12:48.062 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7225/swagger/index.html - - - 404 0 - 221.3902ms
