@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Api/obj/Release/net7.0/Api.csproj.AssemblyReference.cache
+/BusinessLogic/obj/Release/net7.0/BusinessLogic.csproj.AssemblyReference.cache
+/.vs/Api/v17/.suo
