@@ -144,7 +144,8 @@ if (app.Environment.IsProduction())
 //    app.UseSwagger();
 //    app.UseSwaggerUI();
 //}
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.UseAuthorization();

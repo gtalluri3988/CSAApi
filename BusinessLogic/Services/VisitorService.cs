@@ -48,5 +48,11 @@ namespace BusinessLogic.Services
         {
             await _visitorRepository.DeleteAsync(id);
         }
+
+        public async Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsBysearchParams(VisitorAccessDetailsDTO Params)
+        {
+
+           return await _visitorRepository.SearchVisitorsByCommunityIdAsync(Params);
+        }
     }
 }

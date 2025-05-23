@@ -15,5 +15,6 @@ namespace BusinessLogic.Interfaces
         Task<VisitorAccessDetailsDTO> CreateVisitorAsync(VisitorAccessDetailsDTO dto);
         Task UpdateVisitorAsync(int id, VisitorAccessDetailsDTO dto);
         Task DeleteVisitorAsync(int id);
+        Task<IEnumerable<VisitorAccessDetailsDTO>> GetAllVisitorsBysearchParams(VisitorAccessDetailsDTO Params);
     }
 }

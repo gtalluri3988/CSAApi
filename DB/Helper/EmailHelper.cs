@@ -2,7 +2,7 @@
 {
     public class EmailHelper
     {
-        public static string GetWelcomeEmailBody(string residentFullName, string residentEmail, string randomPassword, string residentPageUrl)
+        public static string GetWelcomeEmailBody(string residentFullName, string residentEmail, string randomPassword, string residentPageUrl,string community)
         {
             return $@"
         <html>
@@ -13,7 +13,8 @@
             <p>
                 System URL: <a href='{residentPageUrl}'>{residentPageUrl}</a><br/>
                 Username: {residentEmail}<br/>
-                Temporary Password: {randomPassword}
+                Temporary Password: {randomPassword}<br/>
+                Community: {community}
             </p>
             <p>
                 For security reasons, you will be prompted to change your password upon your first login.

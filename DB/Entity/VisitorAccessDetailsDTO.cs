@@ -15,6 +15,9 @@ namespace DB.Entity
         public string? Status { get; set; }
         public DateTime? EntryTime { get; set; }
         public DateTime? ExitTime { get; set; }
+        
+        public string? DateFrom { get; set; }
+        public string? DateTo { get; set; }
         public string? VehicleNo { get; set; }
         public string? HouseNo { get; set; }
         public string? LevelNo { get; set; }

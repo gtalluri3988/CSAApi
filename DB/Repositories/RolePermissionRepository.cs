@@ -72,31 +72,54 @@ namespace DB.Repositories
 
         public async Task<IEnumerable<MenuResponseDto>> GetRolesMenu(int roleId)
         {
-            var menusWithSubmenus = await _context.Menu.Where(x=>x.ParentId=="0")
-                                  .GroupJoin(_context.RoleMenuPermission.Where(mr => mr.RoleId == roleId),
-                                   menu => menu.Id,
-                                   menuRole => menuRole.MenuId,
-                                   (menu, menuRoles) => new MenuResponseDto
-                                   {
-                                       MenuId = menu.Id,
-                                       MenuName = menu.Name,
+            // Step 1: Fetch all parent menus
+            var parentMenus = await _context.Menu
+                .Where(m => m.ParentId == "0")
+                .ToListAsync();
 
-                                       Url = menu.Url,
-                                       Submenus = menuRoles
-                                        .Join(_context.Menu, // ✅ Join with SubMenu Table
-                                         roleMenu => roleMenu.SubMenuId,
-                                         submenu => submenu.Id,
-                                         (roleMenu, submenu) => new SubmenuDto
-                                         {
-                                             SubmenuId = submenu.Id,
-                                             SubmenuName = submenu.Name ?? "",
-                                             Url = _context.Menu.Where(x=>x.Id== submenu.Id).Select(x=>x.Url).FirstOrDefault()
-                                         })
-                                        .ToList()
-                                   })
-                                   .ToListAsync();
-            return menusWithSubmenus;
+            // Step 2: Get RoleMenuPermissions for the role
+            var rolePermissions = await _context.RoleMenuPermission
+                .Where(rmp => rmp.RoleId == roleId)
+                .ToListAsync();
 
+            // Step 3: Get all referenced submenus (if any)
+            var submenuIds = rolePermissions
+                .Where(rmp => rmp.SubMenuId != null)
+                .Select(rmp => rmp.SubMenuId.Value)
+                .Distinct()
+                .ToList();
+
+            var submenus = await _context.Menu
+                .Where(m => submenuIds.Contains(m.Id))
+                .ToListAsync();
+
+            // Step 4: Assemble response in-memory
+            var result = parentMenus
+                .Where(pm => rolePermissions.Any(rp => rp.MenuId == pm.Id)) // only include if role has permission
+                .Select(pm => new MenuResponseDto
+                {
+                    MenuId = pm.Id,
+                    MenuName = pm.Name,
+                    Url = pm.Url,
+                    Submenus = rolePermissions
+                        .Where(rp => rp.MenuId == pm.Id && rp.SubMenuId != null)
+                        .Select(rp =>
+                        {
+                            var sm = submenus.FirstOrDefault(s => s.Id == rp.SubMenuId);
+                            return sm == null ? null : new SubmenuDto
+                            {
+                                SubmenuId = sm.Id,
+                                SubmenuName = sm.Name ?? "",
+                                Url = sm.Url
+                            };
+                        })
+                        .Where(sm => sm != null)
+                        .ToList()
+                })
+                .ToList();
+
+            return result;
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using DB.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -82,6 +83,13 @@ namespace Api.Controllers
         {
             await _visitorService.DeleteVisitorAsync(id);
             return NoContent();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetAllVisitorsBysearchParams(VisitorAccessDetailsDTO Params)
+        {
+
+            return Ok(await _visitorService.GetAllVisitorsBysearchParams(Params));
         }
     }
 }

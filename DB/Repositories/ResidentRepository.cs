@@ -92,6 +92,7 @@ namespace DB.Repositories
                 await _context.SaveChangesAsync();
             if (resident != null && !string.IsNullOrWhiteSpace(resident.Email))
             {
+                string communityFullName = string.Empty;
                 var password = EmailHelper.GenerateRandomPassword();
                 var res = _context.Resident.Where(x => x.Id == entity.Id).FirstOrDefault();
                 if(res != null)
@@ -99,12 +100,19 @@ namespace DB.Repositories
 
                     res.Password= password;
                     _context.SaveChanges();
+                    var community = _context.Community.Where(x => x.Id == res.CommunityId).FirstOrDefault();
+                    if(community != null)
+                    {
+                        communityFullName = community.CommunityId + "-" + community.CommunityName;
+                    }
                 }
+                
                 await SendWelcomeEmailAsync(
                     toEmail: resident.Email,
                     residentFullName: resident.Name ?? "Resident",
                     tempPassword: password,
-                    residentPageUrl: "https://103.27.86.226/CSADEV/csa/login"
+                    residentPageUrl: "https://103.27.86.226/CSADEV/csa/login",
+                    communityFullName
                 );
             }
             return await GetByIdAsync(entity.Id);
@@ -345,11 +353,11 @@ namespace DB.Repositories
             return _mapper.Map<ResidentDTO>(residents);
         }
 
-        public async Task SendWelcomeEmailAsync(string toEmail, string residentFullName, string tempPassword, string residentPageUrl)
+        public async Task SendWelcomeEmailAsync(string toEmail, string residentFullName, string tempPassword, string residentPageUrl,string community)
         {
             var fromEmail = "absec.demo@gmail.com";
             var subject = $"Welcome to Community Smart Access - Your Account Has Been Created";
-            var body = EmailHelper.GetWelcomeEmailBody(residentFullName, toEmail, tempPassword, residentPageUrl);
+            var body = EmailHelper.GetWelcomeEmailBody(residentFullName, toEmail, tempPassword, residentPageUrl,community);
             using var client = new SmtpClient("smtp.gmail.com") // Replace with your SMTP
             {
                 Port = 587,
