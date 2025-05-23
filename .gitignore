@@ -5,3 +5,8 @@
 /Api/obj/Release/net7.0/Api.csproj.AssemblyReference.cache
 /BusinessLogic/obj/Release/net7.0/BusinessLogic.csproj.AssemblyReference.cache
 /.vs/Api/v17/.suo
+/Api/obj/Release/net7.0/Api.dll
+/Api/obj/Release/net7.0/Api.pdb
+/Api/bin/Release/net7.0/Api.pdb
+/Api/bin/Release/net7.0/Api.dll
+/.vs/Api/FileContentIndex/e5b5cc21-4966-4adf-b143-4941ddc3598b.vsidx
