@@ -39,20 +39,25 @@ namespace Api.Controllers
             
             return Ok(await _residentAccessHistoryService.GetAllResidentAccessHistoryAsync(communityId, IsCSAAdmin()));
         }
-       // [HttpGet]
-        //public async Task<IActionResult> GetResidentAccessHistoryByResidentId(int residentId)
-        //{
-        //    var Residents = await _residentAccessHistoryService.GetResidentsByResidentIdAsync(residentId);
-        //    return Ok(await _residentAccessHistoryService.GetResidentsByResidentIdAsync(residentId));
-        //}
+        [HttpGet]
+        public async Task<IActionResult> GetResidentAccessHistoryByResidentId(int residentId)
+        {
+            return Ok(await _residentAccessHistoryService.GetResidentAccessHistoryByIdAsync(residentId));
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateResidentAccessHistory(ResidentAccessHistoryDTO residentAccessModel)
+        {
+            Random random = new Random();
+            var createdResident = await _residentAccessHistoryService.SaveResidentAccessHistoryAsync(residentAccessModel);
+            return CreatedAtAction(nameof(GetResidentAccessHistoryByResidentId), new { id = createdResident.Id }, createdResident);
+        }
 
-        //[HttpPost]
-        //public async Task<IActionResult> CreateResidentAccessHistory(ResidentDTO residentModel)
-        //{
-        //    Random random = new Random();
-        //    var createdResident = await _residentAccessHistoryService.CreateResidentAsync(residentModel);
-        //    return CreatedAtAction(nameof(GetResidentAccessHistoryByResidentId), new { id = createdResident.Id }, createdResident);
-        //}
+        [HttpGet]
+        public async Task<IActionResult> GetResidentsAccessHistoryById(int? AccessId)
+        {
+
+            return Ok(await _residentAccessHistoryService.GetResidentAccessHistoryByIdAsync(AccessId));
+        }
         //[HttpPost]
         //public async Task<IActionResult> UpdateResidentAccessHistory(int id, ResidentDTO dto)
         //{

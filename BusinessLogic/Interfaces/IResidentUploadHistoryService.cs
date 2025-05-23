@@ -1,4 +1,5 @@
 ﻿using DB.Entity;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace BusinessLogic.Interfaces
 
         Task<ResidentUploadHistoryDTO> GetResidentUploadHistoryByIdAsync(int id);
 
+        
+        Task<string> UpdateDataAsync(IFormFile file, string fileName, string attachment,string communityId, List<Dictionary<string, object>> rows);
         Task<IEnumerable<ResidentUploadHistoryDTO>> GetAllResidentUploadHistoryAsync();
     }
 }

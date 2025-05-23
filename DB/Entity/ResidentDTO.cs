@@ -25,7 +25,7 @@ namespace DB.Entity
         public string? PaymentStatus { get; set; }
         public int RoleId { get; set; }
         public int CommunityId { get; set; }
-        public int ParkingLotQty { get; set; }
+        public int? ParkingLotQty { get; set; }
         public int ParkingLotNos { get; set; }
         public int MaintenenceFeesCost { get; set; }
         public string? maintainanceFee { get; set; }

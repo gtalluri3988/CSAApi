@@ -84,7 +84,7 @@ namespace DB.EFModel
                 if (entry.State == EntityState.Added)
                 {
                     entry.Entity.CreatedDate = DateTime.UtcNow;
-                    entry.Entity.CreatedBy =  GetCurrentUserId(); // Replace with actual user
+                    entry.Entity.CreatedBy = GetCurrentUserId(); // Replace with actual user
                 }
                 else if (entry.State == EntityState.Modified)
                 {

@@ -9,8 +9,7 @@ namespace DB.EFModel
         public int? StateId { get; set; }  // Primary Key
         public string? HouseNo { get; set; }
         public string? Name { get; set; }
-        public string? LotNo { get; set; }
-       
+        public string? LotNo { get; set; }    
         public string? Level { get; set; }
         public int? RoleId { get; set; }
         public string? BlockNo { get; set; }
@@ -20,8 +19,8 @@ namespace DB.EFModel
         public string? Email { get; set; }
         public string? Password { get; set; }
         public int CommunityId { get; set; }
-        public int ParkingLotQty { get; set; }
-        public int ParkingLotNos { get; set; }
+        public int? ParkingLotQty { get; set; }
+        public int? ParkingLotNos { get; set; }
         public int MaintenenceFeesCost { get; set; }
         public string? ContactPerson1 { get; set; }
         public string? ContactPerson2 { get; set; }

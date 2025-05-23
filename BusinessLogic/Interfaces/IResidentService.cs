@@ -17,5 +17,7 @@ namespace BusinessLogic.Interfaces
         Task<IEnumerable<ResidentDTO>> GetAllResidentsByCommunityDropdownAsync(int communityId, string Type);
         Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, string level, string houseNo);
         Task<IEnumerable<ResidentDTO>> SearchResidentsByCommunityIdAsync(ResidentDTO search);
+
+        Task<IEnumerable<string>> GetResidentHierarchyAsync(int communityId, string roadNo, string blockNo, string level, string targetField);
     }
 }

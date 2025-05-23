@@ -97,5 +97,26 @@ namespace Api.Controllers
 
             return Ok(await _residentService.SearchResidentsByCommunityIdAsync(Params));
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> GetResidentHierarchy(int communityId, string roadNo = null, string blockNo = null, string level = null, string targetField = "RoadNo")
+        //{
+        //    var result = await _residentService.GetResidentHierarchyAsync(communityId, roadNo, blockNo, level, targetField);
+        //    return Ok(result);
+        //}
+
+        [HttpPost]
+        public async Task<IActionResult> GetResidentHierarchy([FromBody] ResidencyHierarchyModel request)
+        {
+            var result = await _residentService.GetResidentHierarchyAsync(
+                request.CommunityId,
+                request.RoadNo,
+                request.BlockNo,
+                request.Level,
+                request.TargetField
+            );
+            return Ok(result);
+        }
+
     }
 }

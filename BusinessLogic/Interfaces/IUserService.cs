@@ -18,7 +18,7 @@ namespace BusinessLogic.Interfaces
         void LogAuthAttempt(string Username, string ip, string response,DateTime? jwtExpiryDate,bool online);
         IUser GetByUsername(string userName);
         //Task<User> GetCurrentUserAsync(string userName);
-        Task<bool> CheckPassword(string password,int roleId);
+        Task<bool> CheckPassword(string userName, string password,int roleId);
         string GetUserId();
         string GetUserName();
         List<string> GetUserRoles();

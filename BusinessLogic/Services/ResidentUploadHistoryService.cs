@@ -2,9 +2,12 @@
 using DB.Entity;
 using DB.Repositories;
 using DB.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,11 +22,11 @@ namespace BusinessLogic.Services
             _residentUploadHistoryRepository = residentUploadHistoryRepository;
 
         }
-
-        Task<IEnumerable<ResidentUploadHistoryDTO>> IResidentUploadHistoryService.GetAllResidentUploadHistoryAsync()
+        public async Task<IEnumerable<ResidentUploadHistoryDTO>> GetAllResidentUploadHistoryAsync()
         {
-            throw new NotImplementedException();
+            return await _residentUploadHistoryRepository.GetAllResidentUploadHistoryAsync();
         }
+        
 
         Task<ResidentUploadHistoryDTO> IResidentUploadHistoryService.GetResidentUploadHistoryByIdAsync(int id)
         {
@@ -38,6 +41,11 @@ namespace BusinessLogic.Services
         Task IResidentUploadHistoryService.UpdateResidentUploadHistoryAsync(int id, ResidentUploadHistoryDTO dto)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<string> UpdateDataAsync(IFormFile file, string fileName, string attachment, string communityId, List<Dictionary<string, object>> rows)
+        {
+            return await _residentUploadHistoryRepository.UploadData(file,fileName,attachment,  communityId,rows);
         }
     }
 }

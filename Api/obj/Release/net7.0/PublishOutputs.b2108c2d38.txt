@@ -46,6 +46,7 @@ C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\A
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Release\net7.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Release\net7.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Release\net7.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Release\net7.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Release\net7.0\PubTmp\Out\Serilog.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Release\net7.0\PubTmp\Out\Serilog.AspNetCore.dll
 C:\Users\Srikanth\OneDrive\Documents\Visual Studio 2022\CSA_Core\CSAApi\WebAPI\Api\obj\Release\net7.0\PubTmp\Out\Serilog.Extensions.Hosting.dll

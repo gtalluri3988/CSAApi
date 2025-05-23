@@ -19,8 +19,17 @@ namespace DB.Repositories
 
         public async Task<IEnumerable<FacilityDTO>> GetAllFacilitiesAsync()
         {
-            var Facilities = await _context.Facility.Include(c => c.FacilityType).Include(x=>x.Community).ToListAsync();
-            return _mapper.Map<IEnumerable<FacilityDTO>>(Facilities);
+            int communityId = await GetUserCommunity();
+            var query = _context.Facility
+                .Include(c => c.FacilityType)
+                .Include(c => c.Community)
+                .AsQueryable();
+            if (communityId != 0)
+            {
+                query = query.Where(f => f.CommunityId == communityId);
+            }
+            var facilities = await query.ToListAsync();
+            return _mapper.Map<IEnumerable<FacilityDTO>>(facilities);
         }
 
         public async Task<IEnumerable<FacilityDTO>> SearchFacilitiesAsync(int communityId,int facilityTypeId)

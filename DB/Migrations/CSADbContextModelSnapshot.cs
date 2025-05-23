@@ -869,10 +869,10 @@ namespace DB.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ParkingLotNos")
+                    b.Property<int?>("ParkingLotNos")
                         .HasColumnType("int");
 
-                    b.Property<int>("ParkingLotQty")
+                    b.Property<int?>("ParkingLotQty")
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
@@ -924,11 +924,17 @@ namespace DB.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("EntryTime")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ExitTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ResidentId")
                         .HasColumnType("int");
@@ -971,6 +977,9 @@ namespace DB.Migrations
                     b.Property<string>("Attachment")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CommunityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -993,6 +1002,8 @@ namespace DB.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommunityId");
 
                     b.ToTable("ResidentUploadHistory");
                 });
@@ -1599,6 +1610,15 @@ namespace DB.Migrations
                     b.Navigation("Community");
 
                     b.Navigation("Resident");
+                });
+
+            modelBuilder.Entity("DB.EFModel.ResidentUploadHistory", b =>
+                {
+                    b.HasOne("DB.EFModel.Community", "Community")
+                        .WithMany()
+                        .HasForeignKey("CommunityId");
+
+                    b.Navigation("Community");
                 });
 
             modelBuilder.Entity("DB.EFModel.RoleMenuPermission", b =>

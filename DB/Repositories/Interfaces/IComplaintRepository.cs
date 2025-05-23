@@ -19,5 +19,6 @@ namespace DB.Repositories.Interfaces
         Task<ComplaintDTO> GetComplaintByComplaintIdAsync(int complaintId);
         Task UpdateComplaintAsync(int complaintId, ComplaintDTO complaint, List<IFormFile> photos);
         Task<ComplaintDTO> CreateComplaintAsync(ComplaintDTO dto);
+        Task<IEnumerable<ComplaintDTO>> GetAllComplaintsByCommunityAsync(int communityId);
     }
 }

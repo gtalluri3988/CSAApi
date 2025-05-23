@@ -63,14 +63,14 @@ namespace DB.Repositories
             _context.SaveChanges();
         }
 
-        public async Task<bool> CheckPassword(string Password,int roleId)
+        public async Task<bool> CheckPassword(string userName,string Password,int roleId)
         {
             if (roleId == 0)
             {
-                var user = await _context.Users.Where(x => x.Password == Password).FirstOrDefaultAsync();
+                var user = await _context.Users.Where(x => x.Password == Password && x.UserName==userName).FirstOrDefaultAsync();
                 if (user == null)
                 {
-                    throw new Exception("Invalid username or password");
+                    throw new Exception("Wrong username or password");
                 }
                 if (user != null)
                     return true;
@@ -79,10 +79,10 @@ namespace DB.Repositories
             }
             else
             {
-                var user = await _context.Resident.Where(x => x.Password == Password).FirstOrDefaultAsync();
+                var user = await _context.Resident.Where(x => x.Password == Password &&  x.Email == userName).FirstOrDefaultAsync();
                 if (user == null)
                 {
-                    throw new Exception("Invalid username or password");
+                    throw new Exception("Wrong username or password");
                 }
                 if (user != null)
                     return true;
@@ -94,7 +94,7 @@ namespace DB.Repositories
 
         public int? RoleForUser(int userId)
         {
-            return _context.Users.Where(x => x.Id == userId).Select(x => x.RoleId).FirstOrDefault();
+            return _context.Users.Include(x=>x.Role).Where(x => x.Id == userId).Select(x => x.RoleId).FirstOrDefault();
         }
 
         //public async Task<RoleDTO?> GetRoleAsync(int userId) // Nullable return type
@@ -140,6 +140,7 @@ namespace DB.Repositories
             {
                 throw new Exception("User Already Exist with Same UserName");
             }
+            user.Name = user.FirstName;
             var entity = _mapper.Map<EFModel.Users>(user);
             _context.Users.Add(entity);
             await _context.SaveChangesAsync();

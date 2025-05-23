@@ -9,6 +9,9 @@ namespace DB.EFModel
         public string? FileName { get; set; }
         public string? Attachment { get; set; }
         public int UploadedBy { get; set; }
+        public int? CommunityId { get; set; }
+
+        public Community? Community { get; set; }
         public DateTime? UploadDateTime { get; set; }
     }
 }

@@ -15,7 +15,13 @@ namespace DB.Repositories
         public CommunityRepository(CSADbContext context, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(context, mapper, httpContextAccessor) { }
         public async Task<List<Community>?> GetCommunityListAsync()
         {
-            return await _context.Community.ToListAsync();
+            int communityId = await GetUserCommunity();
+            var query = _context.Community.AsQueryable();
+            if (communityId != 0)
+            {
+                query = query.Where(c => c.Id == communityId);
+            }
+            return await query.ToListAsync();
         }
         public async Task<List<CommunityType>> GetCommunityTypeAsync()
         {
@@ -24,8 +30,22 @@ namespace DB.Repositories
 
         public async Task<IEnumerable<CommunityDTO>> GetAllWithStatesAsync()
         {
-            var community = await _context.Community.OrderByDescending(x => x.Id).Include(c => c.State).Include(c => c.City).Include(c=>c.CommunityType).ToListAsync();
-            return _mapper.Map<IEnumerable<CommunityDTO>>(community);
+            int communityId = await GetUserCommunity();
+
+            var query = _context.Community
+                .Include(c => c.State)
+                .Include(c => c.City)
+                .Include(c => c.CommunityType)
+                .AsQueryable();
+
+            if (communityId != 0)
+            {
+                query = query.Where(c => c.Id == communityId);
+            }
+
+            var communityList = await query.OrderByDescending(x => x.Id).ToListAsync();
+
+            return _mapper.Map<IEnumerable<CommunityDTO>>(communityList);
         }
 
         public async Task<CommunityDTO> SaveCommunityAsync(CommunityDTO community)
@@ -86,15 +106,27 @@ namespace DB.Repositories
 
         public async Task<List<CommunityResidentCountDto>> GetAllCommunityWithResidentListAsync()
         {
-            return await _context.Community
+            int communityId = await GetUserCommunity();
+
+            var query = _context.Community.AsQueryable();
+
+            if (communityId != 0)
+            {
+                query = query.Where(c => c.Id == communityId);
+            }
+
+            var result = await query
                 .Select(c => new CommunityResidentCountDto
                 {
                     Id = c.Id,
                     CommunityId = c.CommunityId,
                     CommunityName = c.CommunityName,
-                    ResidentCount = c.Residents.Count() // Count of residents
-                }).OrderByDescending(c => c.Id)
+                    ResidentCount = c.Residents.Count()
+                })
+                .OrderByDescending(c => c.Id)
                 .ToListAsync();
+
+            return result;
         }
 
 

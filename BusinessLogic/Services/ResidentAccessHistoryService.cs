@@ -1,7 +1,9 @@
 ﻿using BusinessLogic.Interfaces;
+using DB.EFModel;
 using DB.Entity;
 using DB.Repositories;
 using DB.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,14 +33,20 @@ namespace BusinessLogic.Services
             throw new NotImplementedException();
         }
 
-        Task IResidentAccessHistoryService.SaveResidentAccessHistoryAsync(ResidentAccessHistoryDTO dto)
+       
+        Task IResidentAccessHistoryService.UpdateResidentAccessHistoryAsync(int id, ResidentAccessHistoryDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        Task IResidentAccessHistoryService.UpdateResidentAccessHistoryAsync(int id, ResidentAccessHistoryDTO dto)
+        public async Task<ResidentAccessHistoryDTO> SaveResidentAccessHistoryAsync(ResidentAccessHistoryDTO resident)
         {
-            throw new NotImplementedException();
+            return await _residentAccessHistoryRepository.SaveResidentAccessHistoryAsync(resident);
+        }
+
+        public async Task<ResidentAccessHistoryDTO> GetResidentAccessHistoryByIdAsync(int? AccessId)
+        {
+            return await _residentAccessHistoryRepository.GetResidentAccessHistoryByIdAsync(AccessId);
         }
     }
 }

@@ -7,8 +7,11 @@ using BusinessLogic.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
+using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 
@@ -35,7 +38,7 @@ public class AuthController : AuthorizedCSABaseAPIController
         {
             string clientIp = NetWorkUtils.GetClientIp(HttpContext);
             var user = _userService.Authenticate(model.Username, model.Password,model.RoleId, out AuthenticationError loginError);
-            if (user == null || !await _userService.CheckPassword(model.Password,model.RoleId))
+            if (user == null || !await _userService.CheckPassword(model.Username,model.Password,model.RoleId))
             {
                 _logger.Log(LogLevel.Debug, "Login Failed");
                 _userService.LogAuthAttempt(model.Username, clientIp, loginError.Message, null, false);
@@ -107,7 +110,7 @@ public class AuthController : AuthorizedCSABaseAPIController
         {
             string clientIp = NetWorkUtils.GetClientIp(HttpContext);
             var user = _userService.Authenticate(model.Username, model.Password,model.RoleId, out AuthenticationError loginError);
-            if (user == null || !await _userService.CheckPassword(model.Password,model.RoleId))
+            if (user == null || !await _userService.CheckPassword(model.Username, model.Password,model.RoleId))
             {
                 _logger.Log(LogLevel.Debug, "Login Failed");
                 _userService.LogAuthAttempt(model.Username, clientIp, loginError.Message, null, false);
@@ -118,7 +121,9 @@ public class AuthController : AuthorizedCSABaseAPIController
                 return BadRequest(new ErrorMessage { message = "Login failed" });
             }
 
-            var Role = _userService.RoleForUser(user.Id);
+            //var Role = _userService.RoleForUser(user.Id)==""?model.RoleId.ToString(): _userService.RoleForUser(user.Id);
+            var existingRole = _userService.RoleForUser(user.Id);
+            var Role = string.IsNullOrWhiteSpace(existingRole) ? model.RoleId.ToString() : existingRole;
             string tokenString = GenerateJwtToken(user, clientIp);
 
             var authResponse = new AuthenticationResponse { Token = tokenString, RedirectTo = "/home" };
@@ -130,5 +135,7 @@ public class AuthController : AuthorizedCSABaseAPIController
             return BadRequest(ex.Message);
         }
     }
+
+   
 }
 

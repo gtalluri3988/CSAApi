@@ -39,5 +39,10 @@ namespace BusinessLogic.Services
         {
             await _complaintRepository.DeleteAsync(id);
         }
+
+        public async Task<IEnumerable<ComplaintDTO>> GetAllComplaintsByCommunity(int communityId)
+        {
+            return await _complaintRepository.GetAllComplaintsByCommunityAsync(communityId);
+        }
     }
 }

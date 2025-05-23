@@ -63,5 +63,18 @@ namespace DB.Repositories
             _dbSet.Remove(entity);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<int> GetUserCommunity()
+        {
+            int userId = Convert.ToInt32(GetCurrentUserId());
+            int? communityId = await _context.Users
+                .Where(x => x.Id == userId)
+                .Select(x => x.CommunityId)
+                .FirstOrDefaultAsync();
+            return communityId ?? 0;
+        }
+
+
+
     }
 }

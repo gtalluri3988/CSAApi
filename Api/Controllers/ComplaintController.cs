@@ -41,6 +41,20 @@ namespace Api.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllComplaintsByCommunity(int communityId)
+        {
+            try
+            {
+                return Ok(await _complaintService.GetAllComplaintsByCommunity(communityId));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetComplaintById(int id)
         {
@@ -58,9 +72,9 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        [Consumes("multipart/form-data")]
-        public async Task<IActionResult> UpdateComplaint(int id, [FromForm] ComplaintDTO dto, [FromForm] List<IFormFile> photos)
+        public async Task<IActionResult> UpdateComplaint(int id,  ComplaintDTO dto)
         {
+            List<IFormFile> photos = null;
             await _complaintService.UpdateComplaintAsync(id, dto, photos);
             return NoContent();
         }

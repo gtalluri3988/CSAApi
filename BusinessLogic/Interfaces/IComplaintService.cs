@@ -15,5 +15,7 @@ namespace BusinessLogic.Interfaces
         Task<ComplaintDTO> CreateComplaintAsync(ComplaintDTO dto);
         Task UpdateComplaintAsync(int id, ComplaintDTO dto, List<IFormFile> photos);
         Task DeleteComplaintAsync(int id);
+        Task<IEnumerable<ComplaintDTO>> GetAllComplaintsByCommunity(int communityId);
+        
     }
 }

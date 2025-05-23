@@ -21,16 +21,52 @@ namespace DB.Repositories
 
         public async Task<IEnumerable<ResidentAccessHistoryDTO>> GetAllResidentAccessHistoryAsync(int? communityId, bool isCSAAdmin)
         {
-            if (isCSAAdmin)
+            int community = await GetUserCommunity();
+            var query = _context.ResidentAccessHistory
+                .Include(c => c.Resident)
+                .AsQueryable();
+
+            if (communityId != 0)
             {
-                var ResidentAccessHistory = await _context.ResidentAccessHistory.Include(c => c.Resident).ToListAsync();
-                return _mapper.Map<IEnumerable<ResidentAccessHistoryDTO>>(ResidentAccessHistory);
+                query = query.Where(r => r.Resident.CommunityId == community);
             }
-            else
+
+            var residentAccessHistory = await query.ToListAsync();
+            var dtoList = _mapper.Map<List<ResidentAccessHistoryDTO>>(residentAccessHistory);
+
+            var currentTime = DateTime.UtcNow;
+
+            foreach (var dto in dtoList)
             {
-                var ResidentAccessHistory = await _context.ResidentAccessHistory.Where(x=>x.CommunityId== communityId).Include(c => c.Resident).ToListAsync();
-                return _mapper.Map<IEnumerable<ResidentAccessHistoryDTO>>(ResidentAccessHistory);
+                if (dto.ValidFrom <= currentTime && dto.ValidTo >= currentTime)
+                {
+                    dto.Status = "Valid";
+                }
+                else
+                {
+                    dto.Status = "Expired";
+                }
             }
+
+            return dtoList;
+        }
+
+        public async Task<ResidentAccessHistoryDTO> GetResidentAccessHistoryByIdAsync(int? AccessId)
+        {
+            var query =await _context.ResidentAccessHistory.Where(x => x.Id == AccessId)
+                .Include(c => c.Resident).FirstOrDefaultAsync();
+            return _mapper.Map<ResidentAccessHistoryDTO>(query);
+        }
+
+        public async Task<ResidentAccessHistoryDTO> SaveResidentAccessHistoryAsync(ResidentAccessHistoryDTO resident)
+        {
+            var ResidentId=_context.Resident.Where(x=>x.CommunityId==resident.CommunityId && x.RoadNo==resident.RoadNo
+            && x.BlockNo == resident.BlockNo && x.Level == resident.LevelNo && x.HouseNo==resident.HouseNo).Select(x=>x.Id).FirstOrDefault();
+            resident.ResidentId = ResidentId;
+            var entity = _mapper.Map<EFModel.ResidentAccessHistory>(resident);
+            _context.ResidentAccessHistory.Add(entity);
+            await _context.SaveChangesAsync();
+            return await GetByIdAsync(entity.Id);
         }
 
     }

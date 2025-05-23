@@ -15,6 +15,8 @@ namespace DB.Repositories.Interfaces
         Task UpdateAsync(int id, ResidentAccessHistoryDTO dto);
         Task DeleteAsync(int id);
         Task<IEnumerable<ResidentAccessHistoryDTO>> GetAllResidentAccessHistoryAsync(int? communityId, bool isCSAAdmin);
+        Task<ResidentAccessHistoryDTO> SaveResidentAccessHistoryAsync(ResidentAccessHistoryDTO resident);
+        Task<ResidentAccessHistoryDTO> GetResidentAccessHistoryByIdAsync(int? AccessId);
 
 
     }

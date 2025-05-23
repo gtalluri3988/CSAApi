@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Interfaces;
+using DB.EFModel;
 using DB.Entity;
 using DB.Repositories;
 using DB.Repositories.Interfaces;
@@ -57,6 +58,13 @@ namespace BusinessLogic.Services
         {
             return await _residentRepository.SearchResidentsByCommunityIdAsync(search);
         }
+
+        public async Task<IEnumerable<string>> GetResidentHierarchyAsync(int communityId, string roadNo, string blockNo, string level, string targetField)
+        {
+            return await _residentRepository.GetResidentHierarchyAsync(communityId, roadNo, blockNo, level, targetField);
+        }
+
+        
 
     }
 }

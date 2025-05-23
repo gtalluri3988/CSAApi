@@ -80,7 +80,7 @@ namespace DB.Repositories
             }
             else if (inputType == DropDown.Role.ToString())
             {
-                return _context.Roles.Where(x=>x.Name!= "ResidentUser").Select(item => new DropdownItem
+                return _context.Roles.Where(x=>x.Status=="1" && x.Name != "ResidentUser").Select(item => new DropdownItem
                 {
                     Id = item.Id,
                     Name = item.Name ?? string.Empty,

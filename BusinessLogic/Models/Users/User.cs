@@ -21,7 +21,7 @@ namespace BusinessLogic.Models.Users
         public string Role { get => _Role.Value;}
         public UserObject Details { get => _user; }
         public bool HasRole(Roles role)=>Role.ToString() == role.ToString();
-        public bool IsCSAAdmin() => HasRole(Roles.CSAAdmin);
+        public bool IsCSAAdmin() => HasRole(Roles.SystemAdmin);
 
         
     }

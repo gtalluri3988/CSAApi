@@ -13,5 +13,7 @@ namespace DB.Entity
         public string? Attachment { get; set; }
         public int UploadedBy { get; set; }
         public DateTime? UploadDateTime { get; set; }
+        public string? Name { get; set; }
+        public string? CommunityName { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace DB.EFModel
+﻿namespace DB.EFModel
 {
     public class ResidentAccessHistory : BaseEntity
     {
@@ -7,9 +6,10 @@ namespace DB.EFModel
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }  // Primary Key
         public string? VehicleNo { get; set; }
+        public string? Name { get; set; }
+        public string? Email { get; set; }
         public DateTime? EntryTime { get; set; }
         public DateTime? ExitTime { get; set; }
-
         public DateTime? ValidFrom { get; set; }
         public DateTime? ValidTo { get; set; }
         public int? ResidentId { get; set; }  // Primary Key
@@ -17,6 +17,5 @@ namespace DB.EFModel
         public Boolean TemporaryAccess { get; set; }
         public int CommunityId { get; set; }
         public Community? Community { get; set; }
-
     }
 }

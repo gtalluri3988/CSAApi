@@ -4,6 +4,8 @@ using BusinessLogic.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace Api.Controllers
 {
@@ -47,16 +49,21 @@ namespace Api.Controllers
         }
         protected bool IsCSAAdmin()
         {
-            return HttpContext.User.Claims.Any(x => x.Value == Roles.CSAAdmin.ToString());
+            return HttpContext.User.Claims.Any(x => x.Value == GetEnumDisplayName(Roles.SystemAdmin));
         }
-
         protected bool IsResidentAdmin()
         {
-            return HttpContext.User.Claims.Any(x => x.Value == Roles.ResidentAdmin.ToString());
+            return HttpContext.User.Claims.Any(x => x.Value == GetEnumDisplayName(Roles.CommunityAdmin));
         }
         protected bool IsResidentUser()
         {
-            return HttpContext.User.Claims.Any(x => x.Value == Roles.ResidentUser.ToString());
+            return HttpContext.User.Claims.Any(x => x.Value == GetEnumDisplayName(Roles.ResidentUser));
+        }
+        public static string GetEnumDisplayName(Enum value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attr = field?.GetCustomAttribute<DisplayAttribute>();
+            return attr?.Name ?? value.ToString();
         }
     }
 }

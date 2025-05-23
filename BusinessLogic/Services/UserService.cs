@@ -6,6 +6,8 @@ using DB.Entity;
 using DB.Repositories;
 using DB.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using System.Security.Claims;
 
 namespace BusinessLogic.Services
@@ -62,7 +64,7 @@ namespace BusinessLogic.Services
                     userObject.RoleId = useObj1.RoleId == null ? 0 : useObj1.RoleId.Value;
                 }
                 var user = new User(userObject, this);
-                return (user, AuthenticationError.Other("Invalid Username and Password"));
+                return (user, AuthenticationError.Other("Wrong username or password"));
             }
             else
             {
@@ -79,12 +81,12 @@ namespace BusinessLogic.Services
                     userObject.RoleId = useObj1.RoleId;
                 }
                 var user = new User(userObject, this);
-                return (user, AuthenticationError.Other("Invalid Username and Password"));
+                return (user, AuthenticationError.Other("Wrong username or password"));
             }
         }
-        public async Task<bool> CheckPassword(string password,int roleId)
+        public async Task<bool> CheckPassword(string userName,string password,int roleId)
         {
-           return await _userRepository.CheckPassword(password, roleId);
+           return await _userRepository.CheckPassword(userName,password, roleId);
             
         }
 
@@ -109,16 +111,21 @@ namespace BusinessLogic.Services
         }
         public string RoleForUser(int userId)
         {
-            string role = string.Empty;
-            var roleId=_userRepository.RoleForUser(userId);
-            if(roleId != null)
+            var roleId = _userRepository.RoleForUser(userId);
+
+            if (roleId != null && Enum.IsDefined(typeof(Roles), roleId))
             {
-                if(Enum.IsDefined(typeof(Roles), roleId))
-                {
-                   return Enum.GetName(typeof(Roles), roleId);
-                }
+                var roleEnum = (Roles)roleId!;
+                return GetEnumDisplayName(roleEnum);
             }
-            return role;
+
+            return string.Empty;
+        }
+        public static string GetEnumDisplayName(Enum value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attr = field?.GetCustomAttribute<DisplayAttribute>();
+            return attr?.Name ?? value.ToString();
         }
         //public async Task<RoleDTO> RoleIdUser(int userId)
         //{

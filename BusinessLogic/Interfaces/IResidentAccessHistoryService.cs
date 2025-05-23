@@ -11,10 +11,13 @@ namespace BusinessLogic.Interfaces
     {
         Task UpdateResidentAccessHistoryAsync(int id, ResidentAccessHistoryDTO dto);
 
-        Task SaveResidentAccessHistoryAsync(ResidentAccessHistoryDTO dto);
+        Task<ResidentAccessHistoryDTO> SaveResidentAccessHistoryAsync(ResidentAccessHistoryDTO resident);
 
         Task<ResidentAccessHistoryDTO> GetResidentAccessHistoryByIdAsync(int id);
 
         Task<IEnumerable<ResidentAccessHistoryDTO>> GetAllResidentAccessHistoryAsync(int? communityId, bool isCSAAdmin);
+
+        Task<ResidentAccessHistoryDTO> GetResidentAccessHistoryByIdAsync(int? AccessId);
+
     }
 }

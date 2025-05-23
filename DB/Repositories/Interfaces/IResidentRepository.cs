@@ -26,5 +26,9 @@ namespace DB.Repositories.Interfaces
         Task<List<ResidentDTO>> GetResidentsDropdownsAsync(int communityId, string Type);
         Task<ResidentDTO> GetResidentsNameandContactByAddresses(string roadNo, string blockNo, string level, string houseNo);
         Task<IEnumerable<ResidentDTO>> SearchResidentsByCommunityIdAsync(ResidentDTO searchModel);
+        Task<List<string>> GetResidentHierarchyAsync(int communityId = 0,string roadNo = null, string blockNo = null, string level = null, string targetField = "RoadNo");
+
+
+
     }
 }
